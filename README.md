@@ -29,10 +29,10 @@ I focus on combining design, automation, and AI to build smarter and faster crea
 ### 🔹 VectorGuard AI  
 AI-powered preflight tool to validate vector files for print readiness.
 
-### 🔹 ENBD EDM Guard  
+### 🔹 EDM Guard  
 Automated system to check email templates for compliance and accuracy.
 
-### 🔹 Eleven777 Estimate AI  
+### 🔹 Estimate AI  
 AI tool to generate project estimates based on historical data.
 
 ---
