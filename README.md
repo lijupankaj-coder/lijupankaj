@@ -45,7 +45,7 @@ Coming soon…
 
 ## 📫 Contact
 
-Email: liju@eleven777.com  
+Email: lijupsnksj@gmail.com  
 Location: UAE  
 
 ---
