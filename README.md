@@ -45,7 +45,7 @@ Coming soon…
 
 ## 📫 Contact
 
-Email: lijupsnksj@gmail.com  
+Email: lijupankaj@gmail.com  
 Location: UAE  
 
 ---
