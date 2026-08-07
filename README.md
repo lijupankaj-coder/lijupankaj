@@ -1,55 +1,45 @@
-# Liju Pankaj
+# Liju Pankaj — Personal Portfolio
 
-Creative Technologist · AI Product Builder · Design Systems Specialist
+Personal portfolio for Liju Pankaj, a UAE-based Senior Graphic Designer and AI-Assisted Product Builder with more than 20 years of professional experience.
 
----
+## Website structure
 
-## 🚀 About Me
+- Home
+- About Me
+- Expertise
+- Selected Work
+- Experience
+- My Approach
+- Contact
 
-I am a Senior Graphic Designer with 20+ years of experience, specializing in branding, digital design, and AI-powered workflows.
+Selected work is presented as personal case studies focused on Liju's skills, methods, and results.
 
-Currently based in the UAE, I work at Eleven777 Advertising, delivering high-quality creative solutions for leading brands like Emirates NBD, EMAAR, and Burj Al Arab.
+## Technology
 
-I focus on combining design, automation, and AI to build smarter and faster creative systems.
+The site is a lightweight static build using semantic HTML, modern CSS, and small progressive-enhancement JavaScript. It has no runtime dependencies and no build step.
 
----
+- `index.html` — content, metadata, Open Graph tags, and Person structured data
+- `styles.css` — design tokens, global layout, header, hero, and shared components
+- `portfolio.css` — portfolio sections, case studies, experience, approach, and contact
+- `responsive.css` — tablet/mobile behavior and reduced-motion support
+- `script.js` — navigation, theme persistence, subtle reveal effects, and email-form handling
+- `assets/` — retained and adapted abstract portfolio visuals, favicon, and social preview
+- `robots.txt` and `sitemap.xml` — search-engine discovery
+- `CNAME` — GitHub Pages custom domain
 
-## 💡 What I Do
+## Local preview
 
-- Branding & Visual Design  
-- AI-powered Creative Workflows  
-- Web Design & Development  
-- Email Marketing (EDM Development)  
-- Automation & Internal Tools  
+```bash
+python3 -m http.server 4173
+```
 
----
+Open `http://127.0.0.1:4173/`.
 
-## 🧠 AI Projects
+## Deployment
 
-### 🔹 VectorGuard AI  
-AI-powered preflight tool to validate vector files for print readiness.
+GitHub Pages serves the repository root on `lijupankaj.com`. Push changes to the configured publishing branch; no compilation step is required.
 
-### 🔹 EDM Guard  
-Automated system to check email templates for compliance and accuracy.
+## Contact
 
-### 🔹 Estimate AI  
-AI tool to generate project estimates based on historical data.
-
----
-
-## 🌐 Website
-
-Coming soon…
-
----
-
-## 📫 Contact
-
-Email: lijupankaj@gmail.com  
-Location: UAE  
-
----
-
-## ⚡ Note
-
-This is a personal portfolio website hosted using GitHub Pages.
+- Email: lijupankaj@gmail.com
+- Location: United Arab Emirates

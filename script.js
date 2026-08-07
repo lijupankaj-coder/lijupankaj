@@ -1,0 +1,144 @@
+(() => {
+  const root = document.documentElement;
+  const themeSelect = document.querySelector("#theme-select");
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  const header = document.querySelector("[data-header]");
+  const menuToggle = document.querySelector("[data-menu-toggle]");
+  const navLinks = document.querySelector("[data-nav-links]");
+  const contactForm = document.querySelector("[data-contact-form]");
+  const currentYear = document.querySelector("[data-current-year]");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const darkPreference = window.matchMedia("(prefers-color-scheme: dark)");
+
+  const getSavedTheme = () => {
+    try {
+      return localStorage.getItem("liju-theme") || "system";
+    } catch {
+      return "system";
+    }
+  };
+
+  const updateThemeColor = () => {
+    const isDark =
+      root.dataset.theme === "dark" ||
+      (root.dataset.theme === "system" && darkPreference.matches);
+    themeMeta?.setAttribute("content", isDark ? "#071019" : "#f4f7f6");
+  };
+
+  const setTheme = (theme) => {
+    const acceptedTheme = ["light", "dark", "system"].includes(theme)
+      ? theme
+      : "system";
+    root.dataset.theme = acceptedTheme;
+    if (themeSelect) themeSelect.value = acceptedTheme;
+    try {
+      localStorage.setItem("liju-theme", acceptedTheme);
+    } catch {
+      // The selected theme still applies when storage is unavailable.
+    }
+    updateThemeColor();
+  };
+
+  setTheme(getSavedTheme());
+  themeSelect?.addEventListener("change", (event) =>
+    setTheme(event.target.value),
+  );
+  darkPreference.addEventListener("change", updateThemeColor);
+
+  const closeMenu = () => {
+    menuToggle?.setAttribute("aria-expanded", "false");
+    navLinks?.classList.remove("is-open");
+  };
+
+  menuToggle?.addEventListener("click", () => {
+    const willOpen = menuToggle.getAttribute("aria-expanded") !== "true";
+    menuToggle.setAttribute("aria-expanded", String(willOpen));
+    navLinks?.classList.toggle("is-open", willOpen);
+  });
+
+  navLinks?.addEventListener("click", (event) => {
+    if (event.target.closest("a")) closeMenu();
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest(".site-nav")) closeMenu();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeMenu();
+  });
+
+  const updateHeader = () =>
+    header?.classList.toggle("is-scrolled", window.scrollY > 16);
+  updateHeader();
+  window.addEventListener("scroll", updateHeader, { passive: true });
+
+  const reveals = document.querySelectorAll(".reveal");
+  if (reducedMotion.matches || !("IntersectionObserver" in window)) {
+    reveals.forEach((item) => item.classList.add("is-visible"));
+  } else {
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 },
+    );
+    reveals.forEach((item) => revealObserver.observe(item));
+  }
+
+  const sectionLinks = [
+    ...document.querySelectorAll('.nav-links a[href^="#"]'),
+  ];
+  const sections = sectionLinks
+    .map((link) => document.querySelector(link.getAttribute("href")))
+    .filter(Boolean);
+
+  if ("IntersectionObserver" in window) {
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visibleSection) return;
+        sectionLinks.forEach((link) => {
+          const active =
+            link.getAttribute("href") === `#${visibleSection.target.id}`;
+          if (active) link.setAttribute("aria-current", "true");
+          else link.removeAttribute("aria-current");
+        });
+      },
+      { rootMargin: "-25% 0px -60%", threshold: [0.05, 0.3, 0.7] },
+    );
+    sections.forEach((section) => sectionObserver.observe(section));
+  }
+
+  contactForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!contactForm.reportValidity()) return;
+
+    const formData = new FormData(contactForm);
+    const name = String(formData.get("name") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const phone = String(formData.get("phone") || "").trim();
+    const message = String(formData.get("message") || "").trim();
+    const subject = `Portfolio inquiry from ${name}`;
+    const body = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Phone: ${phone || "Not provided"}`,
+      "",
+      "Message:",
+      message,
+    ].join("\n");
+    const formNote = contactForm.querySelector("[data-form-note]");
+    if (formNote) formNote.textContent = "Opening your email app…";
+    window.location.href = `mailto:lijupankaj@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+
+  if (currentYear) currentYear.textContent = String(new Date().getFullYear());
+})();

@@ -1,0 +1,27 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Creative production tools illustration</title>
+  <desc id="desc">A sequence of connected panels and guide lines represents focused creative utilities.</desc>
+  <defs>
+    <linearGradient id="vector-bg" x1="150" y1="100" x2="1450" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#133444"/>
+      <stop offset="1" stop-color="#0a1821"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" rx="42" fill="url(#vector-bg)"/>
+  <g opacity=".42" stroke="#00e5c8" stroke-width="2">
+    <rect x="230" y="170" width="340" height="240" rx="24"/>
+    <rect x="630" y="220" width="340" height="240" rx="24"/>
+    <rect x="1030" y="270" width="340" height="240" rx="24"/>
+    <path d="M430 410L730 460L1130 510"/>
+  </g>
+  <g opacity=".4" stroke="#3db8ff" stroke-width="1.6">
+    <path d="M250 640H1360"/>
+    <path d="M250 700H1360"/>
+    <path d="M250 760H1360"/>
+  </g>
+  <g fill="#3db8ff" fill-opacity=".35">
+    <circle cx="370" cy="290" r="16"/>
+    <circle cx="770" cy="340" r="16"/>
+    <circle cx="1170" cy="390" r="16"/>
+  </g>
+</svg>

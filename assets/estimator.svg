@@ -1,0 +1,26 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Connected ERP data illustration</title>
+  <desc id="desc">Ascending blue and teal columns represent structured operational information.</desc>
+  <defs>
+    <linearGradient id="estimate-bg" x1="130" y1="110" x2="1470" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#19325a"/>
+      <stop offset="1" stop-color="#0b1627"/>
+    </linearGradient>
+    <linearGradient id="estimate-bar" x1="240" y1="210" x2="1260" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3db8ff"/>
+      <stop offset="1" stop-color="#00e5c8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" rx="42" fill="url(#estimate-bg)"/>
+  <g opacity=".5" fill="url(#estimate-bar)">
+    <rect x="280" y="560" width="140" height="180" rx="20"/>
+    <rect x="500" y="490" width="140" height="250" rx="20"/>
+    <rect x="720" y="420" width="140" height="320" rx="20"/>
+    <rect x="940" y="340" width="140" height="400" rx="20"/>
+    <rect x="1160" y="260" width="140" height="480" rx="20"/>
+  </g>
+  <g opacity=".4" stroke="#3db8ff" stroke-width="2">
+    <path d="M240 740H1360"/>
+    <path d="M240 200H1360"/>
+  </g>
+</svg>
