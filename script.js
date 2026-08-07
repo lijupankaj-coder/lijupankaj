@@ -1,5 +1,6 @@
 (() => {
   const root = document.documentElement;
+  const themeSelect = document.querySelector("#theme-select");
   const themeControl = document.querySelector("[data-theme-control]");
   const themeLabel = document.querySelector("[data-theme-label]");
   const themeMeta = document.querySelector('meta[name="theme-color"]');
@@ -23,7 +24,7 @@
     const isDark =
       root.dataset.theme === "dark" ||
       (root.dataset.theme === "system" && darkPreference.matches);
-    themeMeta?.setAttribute("content", isDark ? "#12110f" : "#f4f1ea");
+    themeMeta?.setAttribute("content", isDark ? "#071019" : "#f4f7f6");
   };
 
   const setTheme = (theme) => {
@@ -31,6 +32,7 @@
     const readableTheme =
       acceptedTheme.charAt(0).toUpperCase() + acceptedTheme.slice(1);
     root.dataset.theme = acceptedTheme;
+    if (themeSelect) themeSelect.value = acceptedTheme;
     if (themeLabel) themeLabel.textContent = readableTheme;
     themeControl?.setAttribute(
       "aria-label",
@@ -45,6 +47,9 @@
   };
 
   setTheme(getSavedTheme());
+  themeSelect?.addEventListener("change", (event) =>
+    setTheme(event.target.value),
+  );
   themeControl?.addEventListener("click", () => {
     const currentIndex = themes.indexOf(root.dataset.theme || "system");
     setTheme(themes[(currentIndex + 1) % themes.length]);

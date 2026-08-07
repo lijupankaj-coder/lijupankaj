@@ -4,13 +4,14 @@ Personal portfolio for Liju Pankaj, a UAE-based Creative Technologist and Digita
 
 ## Website structure
 
-- Work
-- Digital Products & Workflow Solutions
 - About
+- Digital Products & Workflow Solutions
+- Work
 - Experience
+- How I Work
 - Contact
 
-Selected work is presented as expandable personal case studies focused on Liju's role, methods, and results. Unconfirmed dates and unavailable portfolio assets are not invented.
+Selected work is presented as personal case-study panels focused on Liju's role, methods, and results. Unconfirmed dates are not invented.
 
 ## Technology
 
@@ -20,8 +21,8 @@ The site is a lightweight static build using semantic HTML, modern CSS, and smal
 - `styles.css` — design tokens, global layout, header, hero, and shared components
 - `portfolio.css` — portfolio, capabilities, experience, and contact sections
 - `responsive.css` — tablet and mobile behavior
-- `script.js` — navigation, theme persistence, reveal effects, and expandable-work behavior
-- `assets/` — favicon, social preview, and archived visual assets
+- `script.js` — navigation, theme persistence, and reveal effects
+- `assets/` — project visuals, favicon, and social preview
 - `robots.txt` and `sitemap.xml` — search-engine discovery
 - `CNAME` — GitHub Pages custom domain
 

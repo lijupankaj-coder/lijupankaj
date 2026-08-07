@@ -1,65 +1,54 @@
-@media (max-width: 64rem) {
-  .hero {
-    min-height: 46rem;
-  }
-
-  .hero-layout {
-    grid-template-columns: minmax(0, 3fr) minmax(12rem, 1fr);
-  }
-
-  .hero-name {
-    font-size: clamp(6rem, 14vw, 9rem);
-  }
-
-  .editorial-grid {
-    grid-template-columns: 8rem minmax(0, 1fr);
-    gap: 3rem;
-  }
-
-  .project summary {
-    grid-template-columns: 1fr 9rem;
-  }
-
-  .experience-item {
-    grid-template-columns: minmax(13rem, 0.9fr) 9rem minmax(16rem, 1.1fr);
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 48rem) {
-  :root {
-    --gutter: 1.25rem;
-  }
-
-  html {
-    scroll-padding-top: 4.8rem;
-  }
-
+@media (max-width: 70rem) {
   .header-inner {
-    grid-template-columns: 1fr auto auto;
-    min-height: 4.5rem;
-    gap: 1rem;
+    grid-template-columns: auto auto 1fr;
   }
 
-  .wordmark {
-    font-size: 0.95rem;
+  .site-nav {
+    order: 3;
+    justify-self: end;
+  }
+
+  .theme-picker {
+    justify-self: end;
   }
 
   .menu-toggle {
+    display: inline-flex;
+    min-height: 2.6rem;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--line-strong);
+    background: var(--bg-elevated);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  .menu-icon {
+    display: grid;
+    gap: 3px;
+  }
+
+  .menu-icon i {
     display: block;
-    font-size: 0.72rem;
+    width: 1rem;
+    height: 2px;
+    background: currentColor;
   }
 
   .js .nav-links {
     position: fixed;
-    top: 4.5rem;
-    right: 0;
-    left: 0;
+    top: 5rem;
+    right: 1rem;
+    left: 1rem;
     display: grid;
     gap: 0;
-    padding: 0.6rem var(--gutter) 1.2rem;
-    border-bottom: 1px solid var(--line);
-    background: var(--paper);
+    padding: 0.75rem;
+    border: 1px solid var(--line);
+    background: var(--bg-elevated);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
     opacity: 0;
     pointer-events: none;
     transform: translateY(-0.5rem);
@@ -75,8 +64,7 @@
   }
 
   .nav-links a {
-    padding: 0.75rem 0;
-    border-bottom: 1px solid var(--line-soft);
+    padding: 0.75rem;
     font-size: 0.9rem;
   }
 
@@ -84,128 +72,109 @@
     display: none;
   }
 
-  .theme-control {
-    min-width: 2.8rem;
-    font-size: 0.58rem;
-  }
-
-  .hero {
-    min-height: auto;
-    padding: 8.5rem 0 4.5rem;
-  }
-
-  .hero-layout {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  .hero-name {
-    font-size: clamp(5rem, 25vw, 7.4rem);
-    line-height: 0.78;
-  }
-
-  .hero-role {
-    margin-top: 3rem;
-    font-size: 1.35rem;
-  }
-
-  .hero-intro {
-    font-size: 1rem;
-  }
-
-  .hero-notes {
-    display: flex;
-    min-height: 0;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-
-  .note {
-    position: static;
-    max-width: 9rem;
-    font-size: 0.95rem;
-  }
-
-  .section {
-    padding: 4.5rem 0;
-  }
-
-  .editorial-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  .section-index {
-    display: grid;
-    grid-template-columns: 2.25rem 1fr;
-    align-items: baseline;
-  }
-
-  .section-index > p:last-child:not(.section-label) {
-    grid-column: 2;
-    max-width: 24rem;
-    margin: 1rem 0 0;
-  }
-
-  .project summary {
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
-    padding: 1.6rem 0;
-  }
-
-  .project summary > span {
-    font-size: clamp(2.35rem, 11vw, 3.8rem);
-  }
-
-  .project summary small {
-    text-align: left;
-  }
-
-  .project-details,
-  .section-intro,
-  .about-layout,
-  .contact-layout {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .project-details dl div {
-    grid-template-columns: 6.5rem 1fr;
-  }
-
-  .section-intro h2,
-  .about-statement {
-    font-size: clamp(3rem, 13vw, 4.6rem);
-  }
-
-  .capability-groups {
-    grid-template-columns: 1fr;
-    margin-top: 3.5rem;
-  }
-
-  .capability,
-  .capability + .capability {
-    padding: 1.6rem 0;
-    border-bottom: 1px solid var(--line-soft);
-    border-left: 0;
-  }
-
-  .approach {
-    grid-template-columns: 1fr;
-    margin-top: 3.5rem;
-  }
-
-  .approach ol {
+  .expertise-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .experience-item {
+  .case-study,
+  .case-study:nth-child(even) {
     grid-template-columns: 1fr;
-    gap: 1rem;
   }
 
-  .contact h2 {
-    font-size: clamp(3.5rem, 15vw, 5rem);
+  .case-study:nth-child(even) img {
+    order: 0;
+  }
+
+  .case-study > img {
+    min-height: 0;
+    aspect-ratio: 16 / 7;
+  }
+}
+
+@media (max-width: 48rem) {
+  .container,
+  .header-inner {
+    width: min(calc(100% - 2rem), var(--max-width));
+  }
+
+  .header-inner {
+    gap: 0.55rem;
+  }
+
+  .wordmark {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+  }
+
+  .theme-picker select {
+    width: 5.4rem;
+    padding: 0 1.2rem 0 0.55rem;
+    font-size: 0.65rem;
+  }
+
+  .hero {
+    padding-top: 8rem;
+  }
+
+  .hero-name {
+    font-size: clamp(3.75rem, 20.5vw, 5rem);
+    line-height: 0.86;
+  }
+
+  .hero-facts,
+  .two-column,
+  .contact-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-facts div {
+    padding-top: 1rem;
+  }
+
+  .two-column,
+  .contact-panel {
+    gap: 2.5rem;
+  }
+
+  .expertise-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .expertise-card {
+    min-height: 10rem;
+  }
+
+  .expertise-card h3 {
+    margin-top: 2rem;
+  }
+
+  .case-study > img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .case-details div {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .approach-list {
+    grid-template-columns: 1fr;
+  }
+
+  .approach-list li,
+  .approach-list li:nth-child(3n + 1) {
+    min-height: 9rem;
+    border-right: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+
+  .approach-list h3 {
+    margin-top: 2rem;
+  }
+
+  .contact-links li {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
   }
 
   .footer-inner {
@@ -213,13 +182,22 @@
   }
 }
 
-@media (max-width: 24rem) {
-  .hero-name {
-    font-size: 4.65rem;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-  .project-details dl div {
-    grid-template-columns: 1fr;
-    gap: 0.25rem;
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .js .reveal {
+    opacity: 1;
+    transform: none;
   }
 }

@@ -1,56 +1,45 @@
-# Design QA
+# Design and Release QA
 
-**Source visual truth**
+## Recovery checkpoint
 
-- `/Users/lijupankaj/.codex/generated_images/019fdb38-4836-7c00-92b4-38755afbd5a9/exec-18aa0faf-9c32-489d-b032-1d1767717197.png`
-- Source pixels: 797 × 1974
+- Safety branch: `safety/today-content-2026-08-07`
+- Protected commit: `e6d6597`
 
-**Rendered implementation**
+## Revert scope
 
-- `/Users/lijupankaj/LLM-Apps/lijupankaj/screenshots/portfolio-1440.png`
-- Implementation pixels: 1440 × 5491
-- CSS viewport: 1440 × 1024
-- Device scale factor: 1
-- State: homepage, light theme, project details closed
+- Design baseline restored from Git commit: `41919e1`
+- Restored design files: `styles.css`, `portfolio.css`, and `responsive.css`
+- Today’s biography, headings, project copy, contact details, SEO title and description, Open Graph metadata, Twitter metadata, canonical URL, and Person structured data remain current.
+- Small post-restore adjustments are limited to fitting today’s three capability groups, styling today’s added copy, improving small-text contrast, and preventing the mobile hero name and theme label from clipping.
 
-**Additional responsive evidence**
+## Browser evidence
 
-- `/Users/lijupankaj/LLM-Apps/lijupankaj/screenshots/portfolio-1024.png` — 1024px tablet/compact desktop
-- `/Users/lijupankaj/LLM-Apps/lijupankaj/screenshots/portfolio-390.png` — 390px mobile
-- `/Users/lijupankaj/LLM-Apps/lijupankaj/screenshots/portfolio-dark-1440.png` — 1440px dark/system-theme evidence
+- Desktop: `/Users/lijupankaj/LLM-Apps/lijupankaj/screenshots/portfolio-1440.png`
+- Tablet: `/Users/lijupankaj/LLM-Apps/lijupankaj/screenshots/portfolio-1024.png`
+- Mobile: `/Users/lijupankaj/LLM-Apps/lijupankaj/screenshots/portfolio-390.png`
+- Dark theme: `/Users/lijupankaj/LLM-Apps/lijupankaj/screenshots/portfolio-dark-1440.png`
 
-**Comparison evidence**
+## Automated results
 
-- Full-page normalized comparison: `/Users/lijupankaj/LLM-Apps/lijupankaj/screenshots/design-comparison.png`
-- Focused hero comparison: `/Users/lijupankaj/LLM-Apps/lijupankaj/screenshots/design-comparison-hero.png`
-- Full-page images were normalized to a shared 1974px comparison height. The focused hero comparison uses the complete 797 × 535 source hero and the complete 1440 × 848 implementation hero, normalized to a shared 848px height.
+- HTML validation: passed
+- JavaScript syntax: passed
+- Navigation links: 4/4
+- Case studies: 4/4
+- Today’s hero and metadata copy: passed
+- Light, dark, and system themes: passed
+- Mobile menu open and Escape-close behavior: passed
+- Email and WhatsApp links: passed
+- Project images: 4/4 loaded
+- Axe accessibility scan: zero violations
+- Browser console errors: zero
+- Browser page errors: zero
+- Desktop horizontal overflow: zero
+- Mobile horizontal overflow: zero
 
-## Findings
+## Visual review
 
-- No actionable P0, P1, or P2 mismatch remains.
-- Fonts and typography: the implementation uses a system Georgia display stack and neutral system sans-serif, matching the source's editorial serif/sans-serif contrast without adding a blocking webfont request. Heading scale, tight display leading, readable body sizing, and mobile wrapping were checked at all required widths.
-- Spacing and layout rhythm: the asymmetric editorial grid, large hero, broad margins, thin section rules, project-list rhythm, and generous negative space are faithful to the selected direction. The implementation is longer than the concept because it includes the required capability groups, process, genuine project details, and professional-experience content at accessible reading sizes.
-- Colors and visual tokens: warm neutral paper, charcoal ink, subtle rules, and controlled cobalt accents match the source. Dark mode preserves contrast and the same hierarchy.
-- Image quality and asset fidelity: the selected design contains no required photography or project imagery. No stock imagery, invented project visuals, fake screenshots, CSS art, or placeholder images were introduced. The Open Graph preview and favicon are raster captures derived from the implemented hero.
-- Copy and content: the approved designation and supporting line are used verbatim. Public content contains no company or product-sales marketing, fabricated dates, statistics, testimonials, or client results.
-- Accessibility and interaction: navigation, theme cycling, mobile menu, expandable project summaries, email, and WhatsApp links work. Axe reported zero violations, there are no console errors, and mobile horizontal overflow is zero.
-
-## Comparison history
-
-1. Initial implementation comparison found one P2 affordance issue: the expandable project rows did not visibly explain that more information was available after the source arrows were omitted.
-2. Fixed by adding explicit “View details” and “Close details” labels to every project summary while keeping the editorial layout intact.
-3. Post-fix captures at 1440px, 1024px, and 390px show clear affordances, preserved hierarchy, and no layout regression.
-
-## Intentional adaptations
-
-- The source's generic “Studio Ledger” label is replaced with the personal wordmark “Liju Pankaj.”
-- Source arrows are replaced with explicit, accessible action labels.
-- The source's decorative LP circle/line is omitted; the handwritten principles are retained as live text.
-- Experience dates are visibly marked for confirmation rather than invented.
-
-## Follow-up polish
-
-- P3: add approved real graphic-design project imagery and a professional portrait when available.
-- P3: add a valid résumé and LinkedIn URL when supplied.
+- Desktop preserves the earlier grid, gradient/orb hero, rounded panels, case-study cards, timeline, and process-card language.
+- Mobile typography and navigation were checked at 390 × 844. The hero name and theme selector fit without clipping.
+- Today’s longer copy wraps cleanly inside the restored components.
 
 final result: passed

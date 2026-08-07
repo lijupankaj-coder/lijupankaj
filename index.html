@@ -10,7 +10,7 @@
     <meta
       name="description"
       content="Liju Pankaj is a UAE-based Creative Technologist and Digital Product Builder creating practical digital products, intelligent workflows and user-friendly business solutions."
-   >
+    >
     <link rel="canonical" href="https://lijupankaj.com/">
     <link rel="icon" href="assets/favicon.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
@@ -24,35 +24,35 @@
     <meta
       property="og:title"
       content="Liju Pankaj | Creative Technologist &amp; Digital Product Builder"
-   >
+    >
     <meta
       property="og:description"
       content="Creating practical digital products, intelligent workflows and user-friendly business solutions."
-   >
+    >
     <meta
       property="og:image"
       content="https://lijupankaj.com/assets/og-liju-pankaj.png"
-   >
+    >
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta
       property="og:image:alt"
       content="Liju Pankaj, Creative Technologist and Digital Product Builder"
-   >
+    >
 
     <meta name="twitter:card" content="summary_large_image">
     <meta
       name="twitter:title"
       content="Liju Pankaj | Creative Technologist &amp; Digital Product Builder"
-   >
+    >
     <meta
       name="twitter:description"
       content="Creating practical digital products, intelligent workflows and user-friendly business solutions."
-   >
+    >
     <meta
       name="twitter:image"
       content="https://lijupankaj.com/assets/og-liju-pankaj.png"
-   >
+    >
 
     <title>Liju Pankaj | Creative Technologist &amp; Digital Product Builder</title>
     <script>
@@ -71,7 +71,7 @@
             window.matchMedia("(prefers-color-scheme: dark)").matches);
         document
           .querySelector('meta[name="theme-color"]')
-          .setAttribute("content", isDark ? "#12110f" : "#f4f1ea");
+          .setAttribute("content", isDark ? "#071019" : "#f4f7f6");
       })();
     </script>
     <script type="application/ld+json">
@@ -108,7 +108,7 @@
     <header class="site-header" data-header>
       <div class="header-inner">
         <a class="wordmark" href="#home" aria-label="Liju Pankaj, home"
-          >Liju Pankaj</a
+          >LIJU PANKAJ</a
         >
         <nav class="site-nav" aria-label="Primary navigation">
           <button
@@ -118,7 +118,8 @@
             aria-controls="primary-links"
             data-menu-toggle
           >
-            <span>Menu</span>
+            <span class="menu-label">Menu</span>
+            <span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span>
           </button>
           <div class="nav-links" id="primary-links" data-nav-links>
             <a href="#work">Work</a>
@@ -127,427 +128,391 @@
             <a href="#contact">Contact</a>
           </div>
         </nav>
-        <button
-          class="theme-control"
-          type="button"
-          data-theme-control
-          aria-label="Color theme: system. Activate to change theme."
-        >
-          <span aria-hidden="true" data-theme-label>System</span>
-        </button>
+        <label class="theme-picker">
+          <span class="sr-only">Color theme</span>
+          <select id="theme-select" aria-label="Color theme">
+            <option value="system">System</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </label>
       </div>
     </header>
 
     <main id="main-content">
       <section class="hero" id="home" aria-labelledby="hero-title">
-        <div class="container hero-layout">
-          <div class="hero-copy">
-            <h1 id="hero-title" class="hero-name reveal">
-              <span>Liju</span>
-              <span>Pankaj</span>
-            </h1>
-            <p class="hero-role reveal">
-              Creative Technologist &amp; Digital Product Builder
-            </p>
-            <p class="hero-intro reveal">
-              Creating practical digital products, intelligent workflows and
-              user-friendly business solutions.
-            </p>
-            <a class="text-link reveal" href="#work">View selected work</a>
-          </div>
-          <div class="hero-notes">
-            <p class="note note-one reveal">Systems that make work better.</p>
-            <p class="note note-two reveal">Let’s build useful things.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section work" id="work" aria-labelledby="work-title">
-        <div class="container editorial-grid">
-          <header class="section-index reveal">
-            <p class="section-number">01</p>
-            <p class="section-label">Selected Work</p>
-            <p>
-              A selection of products and workflows shaped around real
-              operational challenges and everyday work.
-            </p>
-          </header>
-          <div class="section-content">
-            <h2 id="work-title" class="sr-only">Selected Work</h2>
-            <div class="project-list">
-              <details class="project reveal">
-                <summary>
-                  <span>Business Operations Platform</span>
-                  <small>
-                    <span>Business application planning</span>
-                    <span class="project-action">
-                      <span class="when-closed">View details</span>
-                      <span class="when-open">Close details</span>
-                    </span>
-                  </small>
-                </summary>
-                <div class="project-details">
-                  <p>
-                    A connected workspace planned around sales, quotations,
-                    invoices, inventory, procurement, HR, approvals and
-                    reporting.
-                  </p>
-                  <dl>
-                    <div>
-                      <dt>Requirement</dt>
-                      <dd>Bring fragmented business operations into one clear system.</dd>
-                    </div>
-                    <div>
-                      <dt>My role</dt>
-                      <dd>Workflow mapping, product architecture, interface planning and build direction.</dd>
-                    </div>
-                    <div>
-                      <dt>Approach</dt>
-                      <dd>Connected modules, role-based access, clear handoffs and iterative verification.</dd>
-                    </div>
-                    <div>
-                      <dt>Methods</dt>
-                      <dd>Business analysis, UX planning, React, TypeScript, Supabase and AI-enabled development.</dd>
-                    </div>
-                    <div>
-                      <dt>Result</dt>
-                      <dd>A working multi-company operations platform with protected workspaces and connected processes.</dd>
-                    </div>
-                  </dl>
-                </div>
-              </details>
-
-              <details class="project reveal">
-                <summary>
-                  <span>Workforce Notification System</span>
-                  <small>
-                    <span>Internal application</span>
-                    <span class="project-action">
-                      <span class="when-closed">View details</span>
-                      <span class="when-open">Close details</span>
-                    </span>
-                  </small>
-                </summary>
-                <div class="project-details">
-                  <p>
-                    A focused notification experience that helps managers stay
-                    informed about assigned Business Central activity on
-                    desktop and mobile.
-                  </p>
-                  <dl>
-                    <div>
-                      <dt>Requirement</dt>
-                      <dd>Deliver timely, user-scoped notifications, including when the application is closed.</dd>
-                    </div>
-                    <div>
-                      <dt>My role</dt>
-                      <dd>Experience planning, system-flow definition and implementation direction.</dd>
-                    </div>
-                    <div>
-                      <dt>Approach</dt>
-                      <dd>Keep approvals in the source system while making alerts immediate and easy to access.</dd>
-                    </div>
-                    <div>
-                      <dt>Methods</dt>
-                      <dd>Responsive UX, PWA planning, secure authentication, realtime data and web push.</dd>
-                    </div>
-                    <div>
-                      <dt>Result</dt>
-                      <dd>A deployed internal tool with in-app and closed-app notifications.</dd>
-                    </div>
-                  </dl>
-                </div>
-              </details>
-
-              <details class="project reveal">
-                <summary>
-                  <span>Creative Agency Workflow</span>
-                  <small>
-                    <span>Creative operations</span>
-                    <span class="project-action">
-                      <span class="when-closed">View details</span>
-                      <span class="when-open">Close details</span>
-                    </span>
-                  </small>
-                </summary>
-                <div class="project-details">
-                  <p>
-                    A structured agency workflow connecting briefs, campaigns,
-                    tasks, estimates, proposals, production, accounts and job
-                    closing.
-                  </p>
-                  <dl>
-                    <div>
-                      <dt>Requirement</dt>
-                      <dd>Turn separate creative and commercial activities into a connected job lifecycle.</dd>
-                    </div>
-                    <div>
-                      <dt>My role</dt>
-                      <dd>Workflow architecture, information planning, interface direction and product shaping.</dd>
-                    </div>
-                    <div>
-                      <dt>Approach</dt>
-                      <dd>Clarify transitions between client service, creative, production and finance.</dd>
-                    </div>
-                    <div>
-                      <dt>Methods</dt>
-                      <dd>Process mapping, organization-scoped permissions, interface systems and iterative planning.</dd>
-                    </div>
-                    <div>
-                      <dt>Result</dt>
-                      <dd>A coherent platform for planning and tracking an agency job from brief to close.</dd>
-                    </div>
-                  </dl>
-                </div>
-              </details>
-
-              <details class="project reveal">
-                <summary>
-                  <span>Creative Production Utilities</span>
-                  <small>
-                    <span>Focused digital tools</span>
-                    <span class="project-action">
-                      <span class="when-closed">View details</span>
-                      <span class="when-open">Close details</span>
-                    </span>
-                  </small>
-                </summary>
-                <div class="project-details">
-                  <p>
-                    Focused utilities for recurring design-production tasks,
-                    including mockups, brand kits, image processing,
-                    estimation, email building, vectors and QR codes.
-                  </p>
-                  <dl>
-                    <div>
-                      <dt>Requirement</dt>
-                      <dd>Make repetitive creative-production tasks quicker and easier to complete.</dd>
-                    </div>
-                    <div>
-                      <dt>My role</dt>
-                      <dd>Use-case definition, visual direction, workflow planning and development guidance.</dd>
-                    </div>
-                    <div>
-                      <dt>Approach</dt>
-                      <dd>Give each tool a small, clear workflow with minimal inputs and immediate feedback.</dd>
-                    </div>
-                    <div>
-                      <dt>Methods</dt>
-                      <dd>Responsive interface design, client-side processing and appropriate modern web tools.</dd>
-                    </div>
-                    <div>
-                      <dt>Result</dt>
-                      <dd>A working collection of practical utilities for everyday creative production.</dd>
-                    </div>
-                  </dl>
-                </div>
-              </details>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section digital" aria-labelledby="digital-title">
-        <div class="container editorial-grid">
-          <header class="section-index reveal">
-            <p class="section-number">02</p>
-            <p class="section-label">What I Build</p>
-          </header>
-          <div class="section-content">
-            <div class="section-intro reveal">
-              <h2 id="digital-title">Digital Products &amp; Workflow Solutions</h2>
-              <p>
-                I design and shape practical digital products and intelligent
-                workflows that make information clearer, reduce manual work and
-                support better day-to-day decisions.
-              </p>
-            </div>
-
-            <div class="capability-groups">
-              <article class="capability reveal">
-                <p>01</p>
-                <h3>Brand &amp; Communication</h3>
-                <ul>
-                  <li>Brand identity and visual communication</li>
-                  <li>Advertising and art direction</li>
-                  <li>Presentation design</li>
-                </ul>
-              </article>
-              <article class="capability reveal">
-                <p>02</p>
-                <h3>Print &amp; Production</h3>
-                <ul>
-                  <li>Print and artwork preparation</li>
-                  <li>Large-format and environmental graphics</li>
-                  <li>Production coordination</li>
-                </ul>
-              </article>
-              <article class="capability reveal">
-                <p>03</p>
-                <h3>Digital &amp; AI</h3>
-                <ul>
-                  <li>UI/UX and digital-product planning</li>
-                  <li>Workflow and business-system mapping</li>
-                  <li>AI-enabled product development</li>
-                </ul>
-              </article>
-            </div>
-
-            <section class="approach reveal" aria-labelledby="approach-title">
-              <h3 id="approach-title">How I work</h3>
-              <ol>
-                <li>Understand the problem</li>
-                <li>Map the workflow</li>
-                <li>Plan the user experience</li>
-                <li>Design the solution</li>
-                <li>Build with modern tools</li>
-                <li>Test and improve</li>
-              </ol>
-            </section>
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="orb orb-one" aria-hidden="true"></div>
+        <div class="orb orb-two" aria-hidden="true"></div>
+        <div class="container hero-inner">
+          <h1 id="hero-title" class="hero-name reveal">Liju Pankaj</h1>
+          <p class="hero-role reveal">
+            Creative Technologist &amp; Digital Product Builder
+          </p>
+          <p class="hero-intro reveal">
+            Creating practical digital products, intelligent workflows and
+            user-friendly business solutions.
+          </p>
+          <div class="hero-actions reveal">
+            <a class="button button-primary" href="#work">View selected work</a>
           </div>
         </div>
       </section>
 
       <section class="section about" id="about" aria-labelledby="about-title">
-        <div class="container editorial-grid">
-          <header class="section-index reveal">
-            <p class="section-number">03</p>
-            <p class="section-label">About</p>
-          </header>
-          <div class="section-content about-layout">
-            <h2 id="about-title" class="about-statement reveal">
+        <div class="container two-column">
+          <div class="section-heading reveal">
+            <p class="eyebrow">About</p>
+            <h2 id="about-title">
               I build with clarity, shape with purpose, and keep it useful.
             </h2>
-            <div class="about-copy reveal">
-              <p>
-                I’m a creative technologist and digital product builder based
-                in the UAE, with more than 20 years of experience across graphic
-                design, branding, advertising, visual communication, print and
-                production.
-              </p>
-              <p>
-                My work has given me a strong understanding of how ideas move
-                from concept through approval, production and final delivery.
-                In recent years, I have expanded that experience into digital
-                products, business workflows and AI-enabled development.
-              </p>
-              <p>
-                I enjoy combining creative judgment with practical technology
-                to make complex ideas clearer, more useful and easier to
-                experience.
-              </p>
-            </div>
+          </div>
+          <div class="prose panel reveal">
+            <p>
+              I’m a creative technologist and digital product builder based in
+              the UAE, with more than 20 years of experience across graphic
+              design, branding, advertising, visual communication, print and
+              production.
+            </p>
+            <p>
+              My work has given me a strong understanding of how ideas move
+              from concept through approval, production and final delivery. In
+              recent years, I have expanded that experience into digital
+              products, business workflows and AI-enabled development.
+            </p>
+            <p>
+              I enjoy combining creative judgment with practical technology to
+              make complex ideas clearer, more useful and easier to experience.
+            </p>
           </div>
         </div>
       </section>
 
-      <section
-        class="section experience"
-        id="experience"
-        aria-labelledby="experience-title"
-      >
-        <div class="container editorial-grid">
-          <header class="section-index reveal">
-            <p class="section-number">04</p>
-            <p class="section-label">Experience</p>
+      <section class="section" id="digital" aria-labelledby="digital-title">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">What I Build</p>
+            <h2 id="digital-title">Digital Products &amp; Workflow Solutions</h2>
+            <p>
+              I design and shape practical digital products and intelligent
+              workflows that make information clearer, reduce manual work and
+              support better day-to-day decisions.
+            </p>
+          </div>
+          <div class="expertise-grid">
+            <article class="expertise-card reveal">
+              <span>01</span>
+              <h3>Brand &amp; Communication</h3>
+              <ul>
+                <li>Brand identity and visual communication</li>
+                <li>Advertising and art direction</li>
+                <li>Presentation design</li>
+              </ul>
+            </article>
+            <article class="expertise-card reveal">
+              <span>02</span>
+              <h3>Print &amp; Production</h3>
+              <ul>
+                <li>Print and artwork preparation</li>
+                <li>Large-format and environmental graphics</li>
+                <li>Production coordination</li>
+              </ul>
+            </article>
+            <article class="expertise-card reveal">
+              <span>03</span>
+              <h3>Digital &amp; AI</h3>
+              <ul>
+                <li>UI/UX and digital-product planning</li>
+                <li>Workflow and business-system mapping</li>
+                <li>AI-enabled product development</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section work" id="work" aria-labelledby="work-title">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Selected Work</p>
+            <h2 id="work-title">Selected Work</h2>
+            <p>
+              A selection of products and workflows shaped around real
+              operational challenges and everyday work.
+            </p>
+          </div>
+
+          <div class="case-studies">
+            <article class="case-study reveal">
+              <img
+                src="assets/business-operations.svg"
+                alt="Abstract operational data visual for a business operations platform"
+                width="1600"
+                height="900"
+                loading="lazy"
+              >
+              <div class="case-content">
+                <p class="case-number">Case study 01</p>
+                <h3>Business Operations Platform</h3>
+                <p class="case-summary">
+                  A connected workspace planned around sales, quotations,
+                  invoices, inventory, procurement, HR, approvals and reporting.
+                </p>
+                <dl class="case-details">
+                  <div>
+                    <dt>Requirement</dt>
+                    <dd>Bring fragmented business operations into one clear system.</dd>
+                  </div>
+                  <div>
+                    <dt>My role</dt>
+                    <dd>Workflow mapping, product architecture, interface planning and build direction.</dd>
+                  </div>
+                  <div>
+                    <dt>Approach</dt>
+                    <dd>Connected modules, role-based access, clear handoffs and iterative verification.</dd>
+                  </div>
+                  <div>
+                    <dt>Methods</dt>
+                    <dd>Business analysis, UX planning, React, TypeScript, Supabase and AI-enabled development.</dd>
+                  </div>
+                  <div>
+                    <dt>Result</dt>
+                    <dd>A working multi-company operations platform with protected workspaces and connected processes.</dd>
+                  </div>
+                </dl>
+              </div>
+            </article>
+
+            <article class="case-study reveal">
+              <img
+                src="assets/workforce-notifications.svg"
+                alt="Abstract interface visual for a workforce notification system"
+                width="1600"
+                height="900"
+                loading="lazy"
+              >
+              <div class="case-content">
+                <p class="case-number">Case study 02</p>
+                <h3>Workforce Notification System</h3>
+                <p class="case-summary">
+                  A focused notification experience that helps managers stay
+                  informed about assigned Business Central activity on desktop
+                  and mobile.
+                </p>
+                <dl class="case-details">
+                  <div>
+                    <dt>Requirement</dt>
+                    <dd>Deliver timely, user-scoped notifications, including when the application is closed.</dd>
+                  </div>
+                  <div>
+                    <dt>My role</dt>
+                    <dd>Experience planning, system-flow definition and implementation direction.</dd>
+                  </div>
+                  <div>
+                    <dt>Approach</dt>
+                    <dd>Keep approvals in the source system while making alerts immediate and easy to access.</dd>
+                  </div>
+                  <div>
+                    <dt>Methods</dt>
+                    <dd>Responsive UX, PWA planning, secure authentication, realtime data and web push.</dd>
+                  </div>
+                  <div>
+                    <dt>Result</dt>
+                    <dd>A deployed internal tool with in-app and closed-app notifications.</dd>
+                  </div>
+                </dl>
+              </div>
+            </article>
+
+            <article class="case-study reveal">
+              <img
+                src="assets/agency-workflow.svg"
+                alt="Abstract visual for a creative agency workflow"
+                width="1600"
+                height="900"
+                loading="lazy"
+              >
+              <div class="case-content">
+                <p class="case-number">Case study 03</p>
+                <h3>Creative Agency Workflow</h3>
+                <p class="case-summary">
+                  A structured agency workflow connecting briefs, campaigns,
+                  tasks, estimates, proposals, production, accounts and job closing.
+                </p>
+                <dl class="case-details">
+                  <div>
+                    <dt>Requirement</dt>
+                    <dd>Turn separate creative and commercial activities into a connected job lifecycle.</dd>
+                  </div>
+                  <div>
+                    <dt>My role</dt>
+                    <dd>Workflow architecture, information planning, interface direction and product shaping.</dd>
+                  </div>
+                  <div>
+                    <dt>Approach</dt>
+                    <dd>Clarify transitions between client service, creative, production and finance.</dd>
+                  </div>
+                  <div>
+                    <dt>Methods</dt>
+                    <dd>Process mapping, organization-scoped permissions, interface systems and iterative planning.</dd>
+                  </div>
+                  <div>
+                    <dt>Result</dt>
+                    <dd>A coherent platform for planning and tracking an agency job from brief to close.</dd>
+                  </div>
+                </dl>
+              </div>
+            </article>
+
+            <article class="case-study reveal">
+              <img
+                src="assets/creative-utilities.svg"
+                alt="Abstract modular visual for creative production tools"
+                width="1600"
+                height="900"
+                loading="lazy"
+              >
+              <div class="case-content">
+                <p class="case-number">Case study 04</p>
+                <h3>Creative Production Utilities</h3>
+                <p class="case-summary">
+                  Focused utilities for recurring design-production tasks,
+                  including mockups, brand kits, image processing, estimation,
+                  email building, vectors and QR codes.
+                </p>
+                <dl class="case-details">
+                  <div>
+                    <dt>Requirement</dt>
+                    <dd>Make repetitive creative-production tasks quicker and easier to complete.</dd>
+                  </div>
+                  <div>
+                    <dt>My role</dt>
+                    <dd>Use-case definition, visual direction, workflow planning and development guidance.</dd>
+                  </div>
+                  <div>
+                    <dt>Approach</dt>
+                    <dd>Give each tool a small, clear workflow with minimal inputs and immediate feedback.</dd>
+                  </div>
+                  <div>
+                    <dt>Methods</dt>
+                    <dd>Responsive interface design, client-side processing and appropriate modern web tools.</dd>
+                  </div>
+                  <div>
+                    <dt>Result</dt>
+                    <dd>A working collection of practical utilities for everyday creative production.</dd>
+                  </div>
+                </dl>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="experience" aria-labelledby="experience-title">
+        <div class="container two-column">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Experience</p>
+            <h2 id="experience-title">Professional Experience</h2>
             <p>
               More than two decades across design, production, creative
               operations and digital products.
             </p>
-          </header>
-          <div class="section-content">
-            <h2 id="experience-title" class="sr-only">Professional Experience</h2>
-            <div class="experience-list">
-              <article class="experience-item reveal">
-                <div>
-                  <h3>Eleven777 Advertising</h3>
-                  <p>Senior Graphic Designer · UAE</p>
-                </div>
-                <p class="experience-date" data-requires-confirmation="true">
-                  Dates to be confirmed
-                </p>
-                <div class="experience-description">
-                  <p>
-                    Branding, advertising, digital, print and production design
-                    for demanding commercial work, including experience with
-                    Emirates NBD, EMAAR and Burj Al Arab projects.
-                  </p>
-                  <p class="responsibilities">
-                    Art direction · Campaign design · Artwork preparation ·
-                    Production coordination
-                  </p>
-                </div>
-              </article>
-              <article class="experience-item reveal">
-                <div>
-                  <h3>Independent Professional Focus</h3>
-                  <p>Creative Technologist &amp; Digital Product Builder · UAE</p>
-                </div>
-                <p class="experience-date" data-requires-confirmation="true">
-                  Start date to be confirmed
-                </p>
-                <div class="experience-description">
-                  <p>
-                    Applying creative-operations knowledge to digital products,
-                    ERP planning, agency workflows, internal tools and focused
-                    production utilities.
-                  </p>
-                  <p class="responsibilities">
-                    Product planning · Workflow mapping · UX direction ·
-                    AI-enabled implementation
-                  </p>
-                </div>
-              </article>
-              <article class="experience-item reveal">
-                <div>
-                  <h3>Earlier Professional Practice</h3>
-                  <p>Graphic Design, Branding &amp; Production</p>
-                </div>
-                <p class="experience-date" data-requires-confirmation="true">
-                  Dates and locations to be confirmed
-                </p>
-                <div class="experience-description">
-                  <p>
-                    A hands-on foundation in visual communication, advertising,
-                    campaign development, prepress and print production.
-                  </p>
-                  <p class="responsibilities">
-                    Design development · Prepress · Large-format production ·
-                    Final artwork
-                  </p>
-                </div>
-              </article>
-            </div>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item reveal">
+              <p>Senior Graphic Designer · UAE</p>
+              <h3>Eleven777 Advertising</h3>
+              <p class="experience-date" data-requires-confirmation="true">
+                Dates to be confirmed
+              </p>
+              <p>
+                Branding, advertising, digital, print and production design for
+                demanding commercial work, including experience with Emirates
+                NBD, EMAAR and Burj Al Arab projects.
+              </p>
+              <p class="responsibilities">
+                Art direction · Campaign design · Artwork preparation ·
+                Production coordination
+              </p>
+            </article>
+            <article class="timeline-item reveal">
+              <p>Creative Technologist &amp; Digital Product Builder · UAE</p>
+              <h3>Independent Professional Focus</h3>
+              <p class="experience-date" data-requires-confirmation="true">
+                Start date to be confirmed
+              </p>
+              <p>
+                Applying creative-operations knowledge to digital products, ERP
+                planning, agency workflows, internal tools and focused
+                production utilities.
+              </p>
+              <p class="responsibilities">
+                Product planning · Workflow mapping · UX direction · AI-enabled
+                implementation
+              </p>
+            </article>
+            <article class="timeline-item reveal">
+              <p>Graphic Design, Branding &amp; Production</p>
+              <h3>Earlier Professional Practice</h3>
+              <p class="experience-date" data-requires-confirmation="true">
+                Dates and locations to be confirmed
+              </p>
+              <p>
+                A hands-on foundation in visual communication, advertising,
+                campaign development, prepress and print production.
+              </p>
+              <p class="responsibilities">
+                Design development · Prepress · Large-format production · Final
+                artwork
+              </p>
+            </article>
           </div>
         </div>
       </section>
 
+      <section class="section approach" id="approach" aria-labelledby="approach-title">
+        <div class="container">
+          <div class="section-heading reveal">
+            <h2 id="approach-title">How I work</h2>
+          </div>
+          <ol class="approach-list">
+            <li class="reveal"><span>01</span><h3>Understand the problem</h3></li>
+            <li class="reveal"><span>02</span><h3>Map the workflow</h3></li>
+            <li class="reveal"><span>03</span><h3>Plan the user experience</h3></li>
+            <li class="reveal"><span>04</span><h3>Design the solution</h3></li>
+            <li class="reveal"><span>05</span><h3>Build with modern tools</h3></li>
+            <li class="reveal"><span>06</span><h3>Test and improve</h3></li>
+          </ol>
+        </div>
+      </section>
+
       <section class="section contact" id="contact" aria-labelledby="contact-title">
-        <div class="container editorial-grid">
-          <header class="section-index reveal">
-            <p class="section-number">05</p>
-            <p class="section-label">Contact</p>
-          </header>
-          <div class="section-content contact-layout">
-            <div>
-              <h2 id="contact-title" class="reveal">
-                Have a project or idea in mind?
-              </h2>
-              <p class="contact-copy reveal">
-                Whether it’s a brand, campaign, digital experience or workflow
-                challenge, I’d be happy to discuss it.
-              </p>
-            </div>
-            <div class="contact-actions reveal">
-              <a href="mailto:lijupankaj@gmail.com">lijupankaj@gmail.com</a>
-              <a
-                href="https://wa.me/971552729279"
-                target="_blank"
-                rel="noopener noreferrer"
-                >WhatsApp</a
-              >
-              <p>Based in the UAE</p>
-            </div>
+        <div class="container contact-panel reveal">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2 id="contact-title">Have a project or idea in mind?</h2>
+            <p>
+              Whether it’s a brand, campaign, digital experience or workflow
+              challenge, I’d be happy to discuss it.
+            </p>
+          </div>
+          <div class="contact-actions">
+            <ul class="contact-links">
+              <li>
+                <span>Email</span>
+                <a href="mailto:lijupankaj@gmail.com">lijupankaj@gmail.com</a>
+              </li>
+              <li>
+                <span>WhatsApp</span>
+                <a
+                  href="https://wa.me/971552729279"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >WhatsApp</a
+                >
+              </li>
+              <li><span>Location</span><strong>Based in the UAE</strong></li>
+            </ul>
           </div>
         </div>
       </section>
