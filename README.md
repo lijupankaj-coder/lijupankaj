@@ -1,29 +1,27 @@
 # Liju Pankaj — Personal Portfolio
 
-Personal portfolio for Liju Pankaj, a UAE-based Senior Graphic Designer and AI-Assisted Product Builder with more than 20 years of professional experience.
+Personal portfolio for Liju Pankaj, a UAE-based Creative Technologist and Digital Product Builder with more than 20 years of experience across design, production, digital products, and business workflows.
 
 ## Website structure
 
-- Home
-- About Me
-- Expertise
-- Selected Work
+- Work
+- Digital Products & Workflow Solutions
+- About
 - Experience
-- My Approach
 - Contact
 
-Selected work is presented as personal case studies focused on Liju's skills, methods, and results.
+Selected work is presented as expandable personal case studies focused on Liju's role, methods, and results. Unconfirmed dates and unavailable portfolio assets are not invented.
 
 ## Technology
 
-The site is a lightweight static build using semantic HTML, modern CSS, and small progressive-enhancement JavaScript. It has no runtime dependencies and no build step.
+The site is a lightweight static build using semantic HTML, modern CSS, and small progressive-enhancement JavaScript. It has no runtime dependencies or build step.
 
 - `index.html` — content, metadata, Open Graph tags, and Person structured data
 - `styles.css` — design tokens, global layout, header, hero, and shared components
-- `portfolio.css` — portfolio sections, case studies, experience, approach, and contact
-- `responsive.css` — tablet/mobile behavior and reduced-motion support
-- `script.js` — navigation, theme persistence, subtle reveal effects, and email-form handling
-- `assets/` — retained and adapted abstract portfolio visuals, favicon, and social preview
+- `portfolio.css` — portfolio, capabilities, experience, and contact sections
+- `responsive.css` — tablet and mobile behavior
+- `script.js` — navigation, theme persistence, reveal effects, and expandable-work behavior
+- `assets/` — favicon, social preview, and archived visual assets
 - `robots.txt` and `sitemap.xml` — search-engine discovery
 - `CNAME` — GitHub Pages custom domain
 
@@ -42,4 +40,5 @@ GitHub Pages serves the repository root on `lijupankaj.com`. Push changes to the
 ## Contact
 
 - Email: lijupankaj@gmail.com
+- WhatsApp: +971 55 272 9279
 - Location: United Arab Emirates

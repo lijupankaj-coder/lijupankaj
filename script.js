@@ -1,14 +1,15 @@
 (() => {
   const root = document.documentElement;
-  const themeSelect = document.querySelector("#theme-select");
+  const themeControl = document.querySelector("[data-theme-control]");
+  const themeLabel = document.querySelector("[data-theme-label]");
   const themeMeta = document.querySelector('meta[name="theme-color"]');
   const header = document.querySelector("[data-header]");
   const menuToggle = document.querySelector("[data-menu-toggle]");
   const navLinks = document.querySelector("[data-nav-links]");
-  const contactForm = document.querySelector("[data-contact-form]");
   const currentYear = document.querySelector("[data-current-year]");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const darkPreference = window.matchMedia("(prefers-color-scheme: dark)");
+  const themes = ["system", "light", "dark"];
 
   const getSavedTheme = () => {
     try {
@@ -22,15 +23,19 @@
     const isDark =
       root.dataset.theme === "dark" ||
       (root.dataset.theme === "system" && darkPreference.matches);
-    themeMeta?.setAttribute("content", isDark ? "#071019" : "#f4f7f6");
+    themeMeta?.setAttribute("content", isDark ? "#12110f" : "#f4f1ea");
   };
 
   const setTheme = (theme) => {
-    const acceptedTheme = ["light", "dark", "system"].includes(theme)
-      ? theme
-      : "system";
+    const acceptedTheme = themes.includes(theme) ? theme : "system";
+    const readableTheme =
+      acceptedTheme.charAt(0).toUpperCase() + acceptedTheme.slice(1);
     root.dataset.theme = acceptedTheme;
-    if (themeSelect) themeSelect.value = acceptedTheme;
+    if (themeLabel) themeLabel.textContent = readableTheme;
+    themeControl?.setAttribute(
+      "aria-label",
+      `Color theme: ${readableTheme.toLowerCase()}. Activate to change theme.`,
+    );
     try {
       localStorage.setItem("liju-theme", acceptedTheme);
     } catch {
@@ -40,20 +45,23 @@
   };
 
   setTheme(getSavedTheme());
-  themeSelect?.addEventListener("change", (event) =>
-    setTheme(event.target.value),
-  );
+  themeControl?.addEventListener("click", () => {
+    const currentIndex = themes.indexOf(root.dataset.theme || "system");
+    setTheme(themes[(currentIndex + 1) % themes.length]);
+  });
   darkPreference.addEventListener("change", updateThemeColor);
 
   const closeMenu = () => {
     menuToggle?.setAttribute("aria-expanded", "false");
     navLinks?.classList.remove("is-open");
+    header?.classList.remove("is-menu-open");
   };
 
   menuToggle?.addEventListener("click", () => {
     const willOpen = menuToggle.getAttribute("aria-expanded") !== "true";
     menuToggle.setAttribute("aria-expanded", String(willOpen));
     navLinks?.classList.toggle("is-open", willOpen);
+    header?.classList.toggle("is-menu-open", willOpen);
   });
 
   navLinks?.addEventListener("click", (event) => {
@@ -86,7 +94,7 @@
           }
         });
       },
-      { threshold: 0.12 },
+      { threshold: 0.08, rootMargin: "0px 0px -5%" },
     );
     reveals.forEach((item) => revealObserver.observe(item));
   }
@@ -106,9 +114,9 @@
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
         if (!visibleSection) return;
         sectionLinks.forEach((link) => {
-          const active =
+          const isActive =
             link.getAttribute("href") === `#${visibleSection.target.id}`;
-          if (active) link.setAttribute("aria-current", "true");
+          if (isActive) link.setAttribute("aria-current", "true");
           else link.removeAttribute("aria-current");
         });
       },
@@ -117,27 +125,14 @@
     sections.forEach((section) => sectionObserver.observe(section));
   }
 
-  contactForm?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    if (!contactForm.reportValidity()) return;
-
-    const formData = new FormData(contactForm);
-    const name = String(formData.get("name") || "").trim();
-    const email = String(formData.get("email") || "").trim();
-    const phone = String(formData.get("phone") || "").trim();
-    const message = String(formData.get("message") || "").trim();
-    const subject = `Portfolio inquiry from ${name}`;
-    const body = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Phone: ${phone || "Not provided"}`,
-      "",
-      "Message:",
-      message,
-    ].join("\n");
-    const formNote = contactForm.querySelector("[data-form-note]");
-    if (formNote) formNote.textContent = "Opening your email app…";
-    window.location.href = `mailto:lijupankaj@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const projects = [...document.querySelectorAll("details.project")];
+  projects.forEach((project) => {
+    project.addEventListener("toggle", () => {
+      if (!project.open) return;
+      projects.forEach((otherProject) => {
+        if (otherProject !== project) otherProject.open = false;
+      });
+    });
   });
 
   if (currentYear) currentYear.textContent = String(new Date().getFullYear());
