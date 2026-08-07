@@ -9,9 +9,8 @@ Personal portfolio for Liju Pankaj, a UAE-based Creative Technologist and Digita
 - Work
 - Experience
 - How I Work
-- Contact
 
-Selected work is presented as personal case-study panels focused on Liju's role, methods, and results. Unconfirmed dates are not invented.
+Each main section occupies the full viewport and uses vertical scroll snapping. Selected work is presented in a horizontal, keyboard-accessible project slider focused on Liju's role, methods, and results. Unconfirmed dates are not invented.
 
 ## Technology
 
@@ -19,9 +18,9 @@ The site is a lightweight static build using semantic HTML, modern CSS, and smal
 
 - `index.html` — content, metadata, Open Graph tags, and Person structured data
 - `styles.css` — design tokens, global layout, header, hero, and shared components
-- `portfolio.css` — portfolio, capabilities, experience, and contact sections
+- `portfolio.css` — portfolio, capabilities, experience, and process sections
 - `responsive.css` — tablet and mobile behavior
-- `script.js` — navigation, theme persistence, and reveal effects
+- `script.js` — navigation, theme persistence, section activity, project-slider controls, and reveal effects
 - `assets/` — project visuals, favicon, and social preview
 - `robots.txt` and `sitemap.xml` — search-engine discovery
 - `CNAME` — GitHub Pages custom domain
@@ -37,9 +36,3 @@ Open `http://127.0.0.1:4173/`.
 ## Deployment
 
 GitHub Pages serves the repository root on `lijupankaj.com`. Push changes to the configured publishing branch; no compilation step is required.
-
-## Contact
-
-- Email: lijupankaj@gmail.com
-- WhatsApp: +971 55 272 9279
-- Location: United Arab Emirates

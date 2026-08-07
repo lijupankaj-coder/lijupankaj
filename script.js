@@ -130,15 +130,88 @@
     sections.forEach((section) => sectionObserver.observe(section));
   }
 
-  const projects = [...document.querySelectorAll("details.project")];
-  projects.forEach((project) => {
-    project.addEventListener("toggle", () => {
-      if (!project.open) return;
-      projects.forEach((otherProject) => {
-        if (otherProject !== project) otherProject.open = false;
-      });
+  const fullPageSections = [...document.querySelectorAll("main > section")];
+  if ("IntersectionObserver" in window) {
+    const activeSectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) =>
+          entry.target.classList.toggle("is-active", entry.isIntersecting),
+        );
+      },
+      { threshold: 0.45 },
+    );
+    fullPageSections.forEach((section) => activeSectionObserver.observe(section));
+  } else {
+    fullPageSections.forEach((section) => section.classList.add("is-active"));
+  }
+
+  const projectSlider = document.querySelector("[data-project-slider]");
+  const projectCards = projectSlider
+    ? [...projectSlider.querySelectorAll(".case-study")]
+    : [];
+  const previousProject = document.querySelector("[data-slider-prev]");
+  const nextProject = document.querySelector("[data-slider-next]");
+  const sliderStatus = document.querySelector("[data-slider-status]");
+  let activeProject = 0;
+  let scrollFrame = 0;
+
+  const updateProjectControls = (index) => {
+    activeProject = Math.max(0, Math.min(index, projectCards.length - 1));
+    if (sliderStatus) {
+      sliderStatus.textContent = `Project ${activeProject + 1} of ${projectCards.length}`;
+    }
+    if (previousProject) previousProject.disabled = activeProject === 0;
+    if (nextProject) nextProject.disabled = activeProject === projectCards.length - 1;
+  };
+
+  const showProject = (index) => {
+    const card = projectCards[index];
+    if (!projectSlider || !card) return;
+    projectSlider.scrollTo({
+      left: card.offsetLeft - projectSlider.offsetLeft,
+      behavior: reducedMotion.matches ? "auto" : "smooth",
     });
+    updateProjectControls(index);
+  };
+
+  previousProject?.addEventListener("click", () => showProject(activeProject - 1));
+  nextProject?.addEventListener("click", () => showProject(activeProject + 1));
+
+  projectSlider?.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      showProject(activeProject - 1);
+    }
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      showProject(activeProject + 1);
+    }
   });
+
+  projectSlider?.addEventListener(
+    "scroll",
+    () => {
+      cancelAnimationFrame(scrollFrame);
+      scrollFrame = requestAnimationFrame(() => {
+        const nearestIndex = projectCards.reduce((nearest, card, index) => {
+          const currentDistance = Math.abs(
+            card.offsetLeft - projectSlider.offsetLeft - projectSlider.scrollLeft,
+          );
+          const nearestCard = projectCards[nearest];
+          const nearestDistance = Math.abs(
+            nearestCard.offsetLeft -
+              projectSlider.offsetLeft -
+              projectSlider.scrollLeft,
+          );
+          return currentDistance < nearestDistance ? index : nearest;
+        }, 0);
+        updateProjectControls(nearestIndex);
+      });
+    },
+    { passive: true },
+  );
+
+  updateProjectControls(0);
 
   if (currentYear) currentYear.textContent = String(new Date().getFullYear());
 })();

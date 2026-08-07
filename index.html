@@ -114,6 +114,7 @@
           <button
             class="menu-toggle"
             type="button"
+            aria-label="Toggle navigation"
             aria-expanded="false"
             aria-controls="primary-links"
             data-menu-toggle
@@ -125,7 +126,6 @@
             <a href="#work">Work</a>
             <a href="#about">About</a>
             <a href="#experience">Experience</a>
-            <a href="#contact">Contact</a>
           </div>
         </nav>
         <label class="theme-picker">
@@ -160,7 +160,7 @@
       </section>
 
       <section class="section about" id="about" aria-labelledby="about-title">
-        <div class="container two-column">
+        <div class="container two-column" tabindex="0">
           <div class="section-heading reveal">
             <p class="eyebrow">About</p>
             <h2 id="about-title">
@@ -189,7 +189,7 @@
       </section>
 
       <section class="section" id="digital" aria-labelledby="digital-title">
-        <div class="container">
+        <div class="container" tabindex="0">
           <div class="section-heading reveal">
             <p class="eyebrow">What I Build</p>
             <h2 id="digital-title">Digital Products &amp; Workflow Solutions</h2>
@@ -242,7 +242,21 @@
             </p>
           </div>
 
-          <div class="case-studies">
+          <div
+            class="slider-toolbar reveal"
+            role="group"
+            aria-label="Project slider controls"
+          >
+            <p class="slider-status" data-slider-status aria-live="polite">
+              Project 1 of 4
+            </p>
+            <div class="slider-actions">
+              <button type="button" data-slider-prev>Previous project</button>
+              <button type="button" data-slider-next>Next project</button>
+            </div>
+          </div>
+
+          <div class="case-studies" data-project-slider tabindex="0" aria-label="Selected projects">
             <article class="case-study reveal">
               <img
                 src="assets/business-operations.svg"
@@ -251,7 +265,7 @@
                 height="900"
                 loading="lazy"
               >
-              <div class="case-content">
+              <div class="case-content" tabindex="0">
                 <p class="case-number">Case study 01</p>
                 <h3>Business Operations Platform</h3>
                 <p class="case-summary">
@@ -291,7 +305,7 @@
                 height="900"
                 loading="lazy"
               >
-              <div class="case-content">
+              <div class="case-content" tabindex="0">
                 <p class="case-number">Case study 02</p>
                 <h3>Workforce Notification System</h3>
                 <p class="case-summary">
@@ -332,7 +346,7 @@
                 height="900"
                 loading="lazy"
               >
-              <div class="case-content">
+              <div class="case-content" tabindex="0">
                 <p class="case-number">Case study 03</p>
                 <h3>Creative Agency Workflow</h3>
                 <p class="case-summary">
@@ -372,7 +386,7 @@
                 height="900"
                 loading="lazy"
               >
-              <div class="case-content">
+              <div class="case-content" tabindex="0">
                 <p class="case-number">Case study 04</p>
                 <h3>Creative Production Utilities</h3>
                 <p class="case-summary">
@@ -409,7 +423,7 @@
       </section>
 
       <section class="section" id="experience" aria-labelledby="experience-title">
-        <div class="container two-column">
+        <div class="container two-column" tabindex="0">
           <div class="section-heading reveal">
             <p class="eyebrow">Experience</p>
             <h2 id="experience-title">Professional Experience</h2>
@@ -471,7 +485,7 @@
       </section>
 
       <section class="section approach" id="approach" aria-labelledby="approach-title">
-        <div class="container">
+        <div class="container" tabindex="0">
           <div class="section-heading reveal">
             <h2 id="approach-title">How I work</h2>
           </div>
@@ -486,36 +500,6 @@
         </div>
       </section>
 
-      <section class="section contact" id="contact" aria-labelledby="contact-title">
-        <div class="container contact-panel reveal">
-          <div>
-            <p class="eyebrow">Contact</p>
-            <h2 id="contact-title">Have a project or idea in mind?</h2>
-            <p>
-              Whether it’s a brand, campaign, digital experience or workflow
-              challenge, I’d be happy to discuss it.
-            </p>
-          </div>
-          <div class="contact-actions">
-            <ul class="contact-links">
-              <li>
-                <span>Email</span>
-                <a href="mailto:lijupankaj@gmail.com">lijupankaj@gmail.com</a>
-              </li>
-              <li>
-                <span>WhatsApp</span>
-                <a
-                  href="https://wa.me/971552729279"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >WhatsApp</a
-                >
-              </li>
-              <li><span>Location</span><strong>Based in the UAE</strong></li>
-            </ul>
-          </div>
-        </div>
-      </section>
     </main>
 
     <footer class="site-footer">
