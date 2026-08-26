@@ -2,9 +2,9 @@
 
 ## Current production state
 
-`lijupankaj.com` remains on GitHub Pages from the repository publishing branch. The repository has no Pages Actions workflow; Pages is configured at repository level. `CNAME` is preserved. Current DNS points the apex to GitHub Pages (`185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`) and `www` to `lijupankaj.github.io`.
+The full-stack application is deployed from `cms-preview` through the Coolify GitHub App. Next.js and the dedicated self-hosted Supabase stack run on the private application VM; a lightweight Coolify edge bridge on the Hetzner ingress VPS terminates HTTPS and forwards traffic over Tailscale. The preview site, administrator login, published media and production host routing have passed direct tests.
 
-Do not alter those records during preview testing.
+The authoritative DNS provider is Hostinger (`helios.dns-parking.com` and `aster.dns-parking.com`), not Cloudflare. Until the DNS cutover is completed, the apex remains on GitHub Pages. The `safety/pre-cms-2026-08-26` branch and the old Pages configuration are retained as rollback.
 
 ## 1. Create the production Supabase project
 
@@ -42,6 +42,7 @@ Keep GitHub as source control. Push `cms-preview` only after local tests pass. D
 | `NEXT_PUBLIC_SUPABASE_URL` | Build + runtime | `https://PROJECT_REF.supabase.co` |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Build + runtime | Supabase publishable key; safe for browser use because RLS is mandatory |
 | `SUPABASE_SECRET_KEY` | Runtime secret | New-format server secret; never prefix with `NEXT_PUBLIC_` |
+| `SUPABASE_INTERNAL_URL` | Runtime | Private Docker-network Kong URL used by server-side requests |
 | `DATABASE_URL` | Runtime secret | Direct/session PostgreSQL connection used only by startup migrations |
 | `DATABASE_SSL` | Runtime | `require` in hosted production |
 | `CMS_ADMIN_EMAIL` | Runtime | The single approved administrator email |
@@ -81,18 +82,21 @@ Do not proceed to DNS until all items pass on the Coolify preview domain:
 
 The in-app browser was unavailable during local verification, so this external visual/click-through gate is mandatory.
 
-## 6. Production cutover — confirmation required
+## 6. Production cutover
 
-Ask Liju for explicit approval after the preview checklist passes.
+Liju explicitly approved production deployment. The Coolify applications are already configured for `lijupankaj.com`, `www.lijupankaj.com`, and `supabase.lijupankaj.com`; production environment variables and Auth callbacks are applied.
 
-1. Create a deployment tag or record the final preview commit SHA.
-2. Attach `lijupankaj.com` and `www.lijupankaj.com` to the verified Coolify application.
-3. In Cloudflare, change the apex from the four GitHub Pages A records to an A record for `<HETZNER_VPS_PUBLIC_IP>` (or the exact Coolify ingress target). Change `www` to CNAME `@`.
-4. Use Cloudflare SSL/TLS **Full (strict)**, Always Use HTTPS, TLS 1.2+, and proxy only after the origin certificate is valid. Do not enable cache rules for `/admin*`, `/api/admin*` or `/auth*`.
-5. Set `SITE_URL=https://lijupankaj.com`, add the production Auth callback URL in Supabase, redeploy and test both hostnames.
-6. Monitor for at least 24 hours before disabling GitHub Pages in repository Settings → Pages. There is no workflow file to remove.
-7. Keep the previous static branch and commit indefinitely as a rollback checkpoint.
+In Hostinger DNS:
+
+1. Preserve all MX, TXT, CAA and unrelated records.
+2. Replace the four GitHub Pages apex A records with one `@` A record pointing to the Coolify Hetzner ingress address from the private server inventory.
+3. Change `www` from `lijupankaj.github.io` to CNAME `lijupankaj.com`.
+4. Add a `supabase` A record pointing to the same Coolify ingress address.
+5. Use TTL 300 during cutover. Hostinger automatically creates DNS snapshots; record the newest snapshot ID before writing.
+6. Verify authoritative DNS, HTTP-to-HTTPS redirects, valid Let’s Encrypt certificates, `/api/health`, the homepage, `/admin`, login/logout, publish, and media downloads.
+7. Run the five-minute uptime check during the observation period. Disable GitHub Pages only after the Coolify site remains stable; there is no Pages workflow file to remove.
+8. Keep the safety branch and old DNS values indefinitely as a rollback checkpoint.
 
 ## Rollback during cutover
 
-If the Coolify release is unhealthy, immediately restore the prior Cloudflare apex A records and `www` CNAME listed above. Re-enable/retain GitHub Pages and its `CNAME`. DNS rollback does not require deleting the Coolify app or Supabase project. Restore content or media separately only if data was damaged; see [OPERATIONS.md](OPERATIONS.md).
+If the Coolify release is unhealthy, restore the latest pre-cutover Hostinger DNS snapshot or restore the four GitHub Pages apex A records and `www` CNAME `lijupankaj.github.io`. Retain/re-enable GitHub Pages and its `CNAME`. DNS rollback does not require deleting the Coolify app or Supabase service. Restore content or media separately only if data was damaged; see [OPERATIONS.md](OPERATIONS.md).

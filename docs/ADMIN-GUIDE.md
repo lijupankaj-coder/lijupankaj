@@ -19,6 +19,8 @@ For production recovery, use the same `/admin/forgot-password` flow. Configure t
 - `https://PREVIEW_DOMAIN/auth/callback`
 - `https://lijupankaj.com/auth/callback`
 
+If SMTP delivery is temporarily unavailable, use the application terminal in Coolify and run `npm run admin:reset-password`. It prompts twice without displaying the password, verifies the configured email and `admin_users` allow-list entry, and changes only that approved account. The command never prints the password. Do not put a password directly in a shared shell command or deployment log.
+
 ## Publishing model
 
 - Every content, project and style edit is a private draft.

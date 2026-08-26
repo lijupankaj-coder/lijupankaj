@@ -2,7 +2,7 @@
 
 Full-stack professional portfolio for Liju Pankaj, Senior Graphic Designer. The public site is driven by an atomic published snapshot; all draft content, project media and administrative operations stay behind Supabase Auth, PostgreSQL Row Level Security and server-side authorization.
 
-The current production site on GitHub Pages is intentionally unchanged. Development is isolated on `cms-preview`; the rollback checkpoint is `safety/pre-cms-2026-08-26`.
+The full-stack release is deployed and verified in Coolify from `cms-preview`. The prior GitHub Pages release remains reachable until Hostinger DNS is cut over; the rollback checkpoint is `safety/pre-cms-2026-08-26`.
 
 ## What is included
 
@@ -60,4 +60,4 @@ docker build -t liju-portfolio-cms:preview .
 - [Backups, restore and rollback](docs/OPERATIONS.md)
 - [Portfolio asset checklist](docs/ASSET-CHECKLIST.md)
 
-Do not switch `lijupankaj.com`, disable GitHub Pages or remove the current deployment until the Coolify preview has passed the documented acceptance checks and Liju has explicitly approved the DNS cutover.
+Do not disable GitHub Pages or delete the safety branch until the Coolify production domains have remained stable through the documented observation period.

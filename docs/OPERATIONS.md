@@ -4,7 +4,7 @@
 
 - Coolify health endpoint: `GET /api/health`, interval 30 seconds, timeout 5 seconds, three failures before unhealthy.
 - Keep automatic restart enabled unless stopped manually.
-- Configure Uptime Kuma or another external monitor for `/api/health` and the public homepage at five-minute intervals. Alert by email or another private channel.
+- The Hetzner ingress host runs `ops/check-production-health.sh` every five minutes against `/api/health`, the public homepage and Supabase Auth. Failures are written to the dedicated monitor log. Add an email or private-message alert transport when credentials are available.
 - Monitor Coolify container logs and Supabase Auth, Postgres and Storage logs. Application errors contain no credentials or uploaded file contents.
 - The health endpoint deliberately remains healthy when it can serve the last published snapshot; database outages should be separately monitored through Supabase alerts.
 
@@ -12,8 +12,8 @@
 
 Use two independent layers:
 
-1. Enable Supabase managed daily database backups. Enable point-in-time recovery if the plan supports it.
-2. Schedule external daily database and Storage backups from a dedicated Coolify scheduled job or secured Hetzner operations container.
+1. The self-hosted stack runs `ops/backup-self-hosted.sh` daily on the application VM. It creates a PostgreSQL custom-format dump and a matching archive of the private Storage volume.
+2. Each daily set is copied to the separate ingress VPS. Local and remote copies use a 30-day rolling retention policy. Add a third encrypted offsite destination when available.
 
 Retention target:
 
@@ -23,7 +23,20 @@ Retention target:
 
 Never store database passwords, S3 secret keys or backup encryption keys in the repository. Use Coolify secrets and an encrypted offsite backup provider with lifecycle rules.
 
-## PostgreSQL backup job
+## Self-hosted production backup job
+
+The production host installs the repository script at `/usr/local/sbin/backup-lijupankaj-cms` and loads its protected settings from `/etc/lijupankaj-backup.env`. Root cron runs it daily. The settings file contains the Supabase service UUID, local destination, retention, dedicated SSH key and remote backup target; it must remain mode `0600` and must not be committed.
+
+Run an on-demand verification with:
+
+```bash
+sudo env -i PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+  sh -c '. /etc/lijupankaj-backup.env && /usr/local/sbin/backup-lijupankaj-cms'
+```
+
+Verify the newest set with `sha256sum -c SHA256SUMS`. The separate VPS runs its own retention task inside the dedicated portfolio backup account.
+
+## Managed Supabase alternative
 
 The job image needs PostgreSQL client tools and optionally `rclone`. Mount a backup volume at `/backups`, then schedule daily:
 
