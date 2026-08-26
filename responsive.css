@@ -52,7 +52,6 @@
   .hero { min-height: auto; padding-top: 88px; }
   .work-heading { grid-template-columns: 1fr; gap: 30px; }
   .work-heading > p { max-width: 640px; }
-  .innovation { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr 1fr; }
   .contact-grid > *:nth-child(2) { border-right: 0; }
   .contact-grid > *:last-child { grid-column: 1 / -1; padding-left: 0; border-top: 1px solid rgb(255 255 255 / 35%); }
@@ -134,8 +133,6 @@
   .dialog-gallery figure:first-child { grid-column: auto; }
   .capability-grid { margin-top: 54px; }
   .capability-grid article { min-height: 0; padding: 24px 0; }
-  .innovation { margin-top: 76px; padding: 42px 24px; }
-  .innovation-copy li { grid-template-columns: 1fr; gap: 3px; }
   .background-grid { margin-top: 52px; }
   .background-grid li { display: grid; }
   .background-grid li span:last-child { text-align: left; }

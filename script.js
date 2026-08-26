@@ -147,6 +147,18 @@
   const year = document.querySelector("#current-year");
   if (year) year.textContent = String(new Date().getFullYear());
 
+  const internalToolsToggle = document.querySelector(".internal-tools-toggle");
+  const moreInternalTools = document.querySelector("#more-internal-tools");
+
+  internalToolsToggle?.addEventListener("click", () => {
+    if (!moreInternalTools) return;
+    const willOpen = internalToolsToggle.getAttribute("aria-expanded") !== "true";
+    internalToolsToggle.setAttribute("aria-expanded", String(willOpen));
+    moreInternalTools.hidden = !willOpen;
+    const label = internalToolsToggle.querySelector("[data-toggle-label]");
+    if (label) label.textContent = willOpen ? "View Fewer Internal Tools" : "View More Internal Tools";
+  });
+
   renderProjects();
 
   const hashProject = location.hash.match(/^#project=([a-z0-9-]+)$/i)?.[1];
