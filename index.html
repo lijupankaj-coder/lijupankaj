@@ -1,498 +1,221 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="system">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
-    <meta name="theme-color" content="#f4f1ea">
-    <meta name="author" content="Liju Pankaj">
-    <meta name="robots" content="index, follow, max-image-preview:large">
-    <meta
-      name="description"
-      content="Liju Pankaj is a UAE-based Creative Technologist and Digital Product Builder creating practical digital products, intelligent workflows and user-friendly business solutions."
-    >
-    <link rel="canonical" href="https://lijupankaj.com/">
-    <link rel="icon" href="assets/favicon.png" type="image/png">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="portfolio.css">
-    <link rel="stylesheet" href="responsive.css">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Liju Pankaj — Senior Graphic Designer in the UAE</title>
+  <meta name="description" content="Portfolio of Liju Pankaj, a Senior Graphic Designer with 24 years of experience across brand, campaign, event, exhibition, hospitality and banking design in the UAE.">
+  <meta name="theme-color" content="#f3f0e9">
+  <link rel="canonical" href="https://lijupankaj.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lijupankaj.com/">
+  <meta property="og:title" content="Liju Pankaj — Senior Graphic Designer">
+  <meta property="og:description" content="Brand, campaign and event design shaped by 24 years of experience, including 21 years in the UAE.">
+  <meta property="og:image" content="https://lijupankaj.com/assets/social-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="800">
+  <meta property="og:image:alt" content="LEAP event stage graphics from Liju Pankaj's selected design work">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Liju Pankaj — Senior Graphic Designer">
+  <meta name="twitter:description" content="Selected brand, campaign, event, hospitality and banking design work.">
+  <meta name="twitter:image" content="https://lijupankaj.com/assets/social-preview.jpg">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="alternate icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="portfolio.css">
+  <link rel="stylesheet" href="responsive.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Liju Pankaj",
+    "url": "https://lijupankaj.com/",
+    "image": "https://lijupankaj.com/assets/profile/liju-pankaj.jpg",
+    "jobTitle": "Senior Graphic Designer",
+    "description": "Senior Graphic Designer specialising in brand, campaign and event design with 24 years of experience, including 21 years in the UAE.",
+    "email": "mailto:lijupankaj@gmail.com",
+    "telephone": "+971552729279",
+    "address": {"@type": "PostalAddress", "addressLocality": "Sharjah", "addressCountry": "AE"},
+    "worksFor": {"@type": "Organization", "name": "Eleven777 Advertising LLC"},
+    "knowsAbout": ["Brand identity", "Campaign design", "Event graphics", "Exhibition design", "Print production", "Presentation design", "Motion graphics", "AI-assisted creative workflows"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <meta property="og:type" content="profile">
-    <meta property="og:locale" content="en_AE">
-    <meta property="og:site_name" content="Liju Pankaj">
-    <meta property="og:url" content="https://lijupankaj.com/">
-    <meta
-      property="og:title"
-      content="Liju Pankaj | Creative Technologist &amp; Digital Product Builder"
-    >
-    <meta
-      property="og:description"
-      content="Creating practical digital products, intelligent workflows and user-friendly business solutions."
-    >
-    <meta
-      property="og:image"
-      content="https://lijupankaj.com/assets/og-liju-pankaj.png"
-    >
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta
-      property="og:image:alt"
-      content="Liju Pankaj, Creative Technologist and Digital Product Builder"
-    >
+  <header class="site-header" data-header>
+    <a class="wordmark" href="#top" aria-label="Liju Pankaj, home"><span>Liju</span> Pankaj</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
+      <span class="sr-only">Open navigation</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+    <nav class="site-nav" id="site-navigation" aria-label="Primary navigation">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#work">Selected Work</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-resume" href="assets/documents/liju-pankaj-resume-2026.pdf" download>Download Resume</a>
+    </nav>
+  </header>
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta
-      name="twitter:title"
-      content="Liju Pankaj | Creative Technologist &amp; Digital Product Builder"
-    >
-    <meta
-      name="twitter:description"
-      content="Creating practical digital products, intelligent workflows and user-friendly business solutions."
-    >
-    <meta
-      name="twitter:image"
-      content="https://lijupankaj.com/assets/og-liju-pankaj.png"
-    >
-
-    <title>Liju Pankaj | Creative Technologist &amp; Digital Product Builder</title>
-    <script>
-      document.documentElement.classList.add("js");
-      (() => {
-        let savedTheme = "system";
-        try {
-          savedTheme = localStorage.getItem("liju-theme") || "system";
-        } catch {
-          // System preference remains available when storage is disabled.
-        }
-        document.documentElement.dataset.theme = savedTheme;
-        const isDark =
-          savedTheme === "dark" ||
-          (savedTheme === "system" &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches);
-        document
-          .querySelector('meta[name="theme-color"]')
-          .setAttribute("content", isDark ? "#071019" : "#f4f7f6");
-      })();
-    </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Liju Pankaj",
-        "url": "https://lijupankaj.com/",
-        "image": "https://lijupankaj.com/assets/og-liju-pankaj.png",
-        "jobTitle": "Creative Technologist & Digital Product Builder",
-        "description": "UAE-based creative technologist and digital product builder with more than 20 years of experience across design, production, digital products and business workflows.",
-        "email": "mailto:lijupankaj@gmail.com",
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "AE"
-        },
-        "knowsAbout": [
-          "Graphic design",
-          "Brand identity",
-          "Advertising",
-          "Print production",
-          "User experience planning",
-          "Digital product design",
-          "Workflow mapping",
-          "Business application planning",
-          "AI-assisted product development"
-        ]
-      }
-    </script>
-  </head>
-  <body>
-    <a class="skip-link" href="#main-content">Skip to main content</a>
-
-    <header class="site-header" data-header>
-      <div class="header-inner">
-        <a class="wordmark" href="#home" aria-label="Liju Pankaj, home"
-          >LIJU PANKAJ</a
-        >
-        <nav class="site-nav" aria-label="Primary navigation">
-          <button
-            class="menu-toggle"
-            type="button"
-            aria-label="Toggle navigation"
-            aria-expanded="false"
-            aria-controls="primary-links"
-            data-menu-toggle
-          >
-            <span class="menu-label">Menu</span>
-            <span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span>
-          </button>
-          <div class="nav-links" id="primary-links" data-nav-links>
-            <a href="#work">Work</a>
-            <a href="#about">About</a>
-            <a href="#experience">Experience</a>
-          </div>
-        </nav>
-        <label class="theme-picker">
-          <span class="sr-only">Color theme</span>
-          <select id="theme-select" aria-label="Color theme">
-            <option value="system">System</option>
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-          </select>
-        </label>
+  <main id="main-content">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy" data-reveal>
+        <p class="eyebrow">Sharjah, UAE · Senior creative practice</p>
+        <h1 id="hero-title">Senior Graphic<br>Designer</h1>
+        <p class="hero-positioning">Brand, Campaign &amp; Event Design <span aria-hidden="true">|</span> AI-Assisted Creative Workflows</p>
+        <p class="hero-intro">Senior Graphic Designer with 24 years of experience, including 21 years in the UAE, creating brand identities, integrated campaigns, event environments, presentations and digital experiences for leading regional and international organizations.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#work">View Selected Work <span aria-hidden="true">↘</span></a>
+          <a class="button button-secondary" href="assets/documents/liju-pankaj-resume-2026.pdf" download>Download Resume</a>
+        </div>
+        <dl class="hero-facts">
+          <div><dt>24</dt><dd>Years overall</dd></div>
+          <div><dt>21</dt><dd>Years in the UAE</dd></div>
+          <div><dt>2011</dt><dd>At Eleven777 since</dd></div>
+        </dl>
       </div>
-    </header>
+      <figure class="hero-portrait" data-reveal>
+        <picture>
+          <source srcset="assets/profile/liju-pankaj.avif" type="image/avif">
+          <img src="assets/profile/liju-pankaj.jpg" width="307" height="283" alt="Portrait of Liju Pankaj" fetchpriority="high">
+        </picture>
+        <figcaption><span>Liju Pankaj</span><span>Senior Graphic Designer</span></figcaption>
+      </figure>
+    </section>
 
-    <main id="main-content">
-      <section class="hero" id="home" aria-labelledby="hero-title">
-        <div class="hero-grid" aria-hidden="true"></div>
-        <div class="orb orb-one" aria-hidden="true"></div>
-        <div class="orb orb-two" aria-hidden="true"></div>
-        <div class="container hero-inner">
-          <h1 id="hero-title" class="hero-name reveal">Liju Pankaj</h1>
-          <p class="hero-role reveal">
-            Creative Technologist &amp; Digital Product Builder
-          </p>
-          <p class="hero-intro reveal">
-            Creating practical digital products, intelligent workflows and
-            user-friendly business solutions.
-          </p>
-          <div class="hero-actions reveal">
-            <a class="button button-primary" href="#work">View selected work</a>
-          </div>
-        </div>
-      </section>
+    <aside class="client-line" aria-label="Selected client experience">
+      <p>Selected client experience</p>
+      <ul><li>Informa</li><li>Emirates NBD</li><li>Emaar</li><li>Rove Hotels</li><li>Messe Frankfurt</li><li>Marriott</li></ul>
+    </aside>
 
-      <section class="section about" id="about" aria-labelledby="about-title">
-        <div class="container two-column" tabindex="0">
-          <div class="section-heading reveal">
-            <p class="eyebrow">About</p>
-            <h2 id="about-title">
-              I build with clarity, shape with purpose, and keep it useful.
-            </h2>
-          </div>
-          <div class="prose panel reveal">
-            <p>
-              I’m a creative technologist and digital product builder based in
-              the UAE, with more than 20 years of experience across graphic
-              design, branding, advertising, visual communication, print and
-              production.
-            </p>
-            <p>
-              My work has given me a strong understanding of how ideas move
-              from concept through approval, production and final delivery. In
-              recent years, I have expanded that experience into digital
-              products, business workflows and AI-enabled development.
-            </p>
-            <p>
-              I enjoy combining creative judgment with practical technology to
-              make complex ideas clearer, more useful and easier to experience.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="digital" aria-labelledby="digital-title">
-        <div class="container" tabindex="0">
-          <div class="section-heading reveal">
-            <p class="eyebrow">What I Build</p>
-            <h2 id="digital-title">Digital Products &amp; Workflow Solutions</h2>
-            <p>
-              I design and shape practical digital products and intelligent
-              workflows that make information clearer, reduce manual work and
-              support better day-to-day decisions.
-            </p>
-          </div>
-          <div class="expertise-grid">
-            <article class="expertise-card reveal">
-              <span>01</span>
-              <h3>Brand &amp; Communication</h3>
-              <ul>
-                <li>Brand identity and visual communication</li>
-                <li>Advertising and art direction</li>
-                <li>Presentation design</li>
-              </ul>
-            </article>
-            <article class="expertise-card reveal">
-              <span>02</span>
-              <h3>Print &amp; Production</h3>
-              <ul>
-                <li>Print and artwork preparation</li>
-                <li>Large-format and environmental graphics</li>
-                <li>Production coordination</li>
-              </ul>
-            </article>
-            <article class="expertise-card reveal">
-              <span>03</span>
-              <h3>Digital &amp; AI</h3>
-              <ul>
-                <li>UI/UX and digital-product planning</li>
-                <li>Workflow and business-system mapping</li>
-                <li>AI-enabled product development</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section work" id="work" aria-labelledby="work-title">
-        <div class="container">
-          <div class="section-heading reveal">
-            <p class="eyebrow">Selected Work</p>
-            <h2 id="work-title">Selected Work</h2>
-            <p>
-              A selection of products and workflows shaped around real
-              operational challenges and everyday work.
-            </p>
-          </div>
-
-          <div
-            class="slider-toolbar reveal"
-            role="group"
-            aria-label="Project slider controls"
-          >
-            <p class="slider-status" data-slider-status aria-live="polite">
-              Project 1 of 4
-            </p>
-            <div class="slider-actions">
-              <button type="button" data-slider-prev>Previous project</button>
-              <button type="button" data-slider-next>Next project</button>
-            </div>
-          </div>
-
-          <div class="case-studies" data-project-slider tabindex="0" aria-label="Selected projects">
-            <article class="case-study reveal">
-              <img
-                src="assets/business-operations.svg"
-                alt="Abstract operational data visual for a business operations platform"
-                width="1600"
-                height="900"
-                loading="lazy"
-              >
-              <div class="case-content" tabindex="0">
-                <p class="case-number">Case study 01</p>
-                <h3>Business Operations Platform</h3>
-                <p class="case-summary">
-                  A connected workspace planned around sales, quotations,
-                  invoices, inventory, procurement, HR, approvals and reporting.
-                </p>
-                <dl class="case-details">
-                  <div>
-                    <dt>Requirement</dt>
-                    <dd>Bring fragmented business operations into one clear system.</dd>
-                  </div>
-                  <div>
-                    <dt>My role</dt>
-                    <dd>Workflow mapping, product architecture, interface planning and build direction.</dd>
-                  </div>
-                  <div>
-                    <dt>Approach</dt>
-                    <dd>Connected modules, role-based access, clear handoffs and iterative verification.</dd>
-                  </div>
-                  <div>
-                    <dt>Methods</dt>
-                    <dd>Business analysis, UX planning, React, TypeScript, Supabase and AI-enabled development.</dd>
-                  </div>
-                  <div>
-                    <dt>Result</dt>
-                    <dd>A working multi-company operations platform with protected workspaces and connected processes.</dd>
-                  </div>
-                </dl>
-              </div>
-            </article>
-
-            <article class="case-study reveal">
-              <img
-                src="assets/workforce-notifications.svg"
-                alt="Abstract interface visual for a workforce notification system"
-                width="1600"
-                height="900"
-                loading="lazy"
-              >
-              <div class="case-content" tabindex="0">
-                <p class="case-number">Case study 02</p>
-                <h3>Workforce Notification System</h3>
-                <p class="case-summary">
-                  A focused notification experience that helps managers stay
-                  informed about assigned Business Central activity on desktop
-                  and mobile.
-                </p>
-                <dl class="case-details">
-                  <div>
-                    <dt>Requirement</dt>
-                    <dd>Deliver timely, user-scoped notifications, including when the application is closed.</dd>
-                  </div>
-                  <div>
-                    <dt>My role</dt>
-                    <dd>Experience planning, system-flow definition and implementation direction.</dd>
-                  </div>
-                  <div>
-                    <dt>Approach</dt>
-                    <dd>Keep approvals in the source system while making alerts immediate and easy to access.</dd>
-                  </div>
-                  <div>
-                    <dt>Methods</dt>
-                    <dd>Responsive UX, PWA planning, secure authentication, realtime data and web push.</dd>
-                  </div>
-                  <div>
-                    <dt>Result</dt>
-                    <dd>A deployed internal tool with in-app and closed-app notifications.</dd>
-                  </div>
-                </dl>
-              </div>
-            </article>
-
-            <article class="case-study reveal">
-              <img
-                src="assets/agency-workflow.svg"
-                alt="Abstract visual for a creative agency workflow"
-                width="1600"
-                height="900"
-                loading="lazy"
-              >
-              <div class="case-content" tabindex="0">
-                <p class="case-number">Case study 03</p>
-                <h3>Creative Agency Workflow</h3>
-                <p class="case-summary">
-                  A structured agency workflow connecting briefs, campaigns,
-                  tasks, estimates, proposals, production, accounts and job closing.
-                </p>
-                <dl class="case-details">
-                  <div>
-                    <dt>Requirement</dt>
-                    <dd>Turn separate creative and commercial activities into a connected job lifecycle.</dd>
-                  </div>
-                  <div>
-                    <dt>My role</dt>
-                    <dd>Workflow architecture, information planning, interface direction and product shaping.</dd>
-                  </div>
-                  <div>
-                    <dt>Approach</dt>
-                    <dd>Clarify transitions between client service, creative, production and finance.</dd>
-                  </div>
-                  <div>
-                    <dt>Methods</dt>
-                    <dd>Process mapping, organization-scoped permissions, interface systems and iterative planning.</dd>
-                  </div>
-                  <div>
-                    <dt>Result</dt>
-                    <dd>A coherent platform for planning and tracking an agency job from brief to close.</dd>
-                  </div>
-                </dl>
-              </div>
-            </article>
-
-            <article class="case-study reveal">
-              <img
-                src="assets/creative-utilities.svg"
-                alt="Abstract modular visual for creative production tools"
-                width="1600"
-                height="900"
-                loading="lazy"
-              >
-              <div class="case-content" tabindex="0">
-                <p class="case-number">Case study 04</p>
-                <h3>Creative Production Utilities</h3>
-                <p class="case-summary">
-                  Focused utilities for recurring design-production tasks,
-                  including mockups, brand kits, image processing, estimation,
-                  email building, vectors and QR codes.
-                </p>
-                <dl class="case-details">
-                  <div>
-                    <dt>Requirement</dt>
-                    <dd>Make repetitive creative-production tasks quicker and easier to complete.</dd>
-                  </div>
-                  <div>
-                    <dt>My role</dt>
-                    <dd>Use-case definition, visual direction, workflow planning and development guidance.</dd>
-                  </div>
-                  <div>
-                    <dt>Approach</dt>
-                    <dd>Give each tool a small, clear workflow with minimal inputs and immediate feedback.</dd>
-                  </div>
-                  <div>
-                    <dt>Methods</dt>
-                    <dd>Responsive interface design, client-side processing and appropriate modern web tools.</dd>
-                  </div>
-                  <div>
-                    <dt>Result</dt>
-                    <dd>A working collection of practical utilities for everyday creative production.</dd>
-                  </div>
-                </dl>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="experience" aria-labelledby="experience-title">
-        <div class="container two-column" tabindex="0">
-          <div class="section-heading reveal">
-            <p class="eyebrow">Experience</p>
-            <h2 id="experience-title">Professional Experience</h2>
-            <p>
-              More than two decades across design, production, creative
-              operations and digital products.
-            </p>
-          </div>
-          <div class="timeline">
-            <article class="timeline-item reveal">
-              <p>Senior Graphic Designer · UAE</p>
-              <h3>Eleven777 Advertising</h3>
-              <p class="experience-date" data-requires-confirmation="true">
-                Dates to be confirmed
-              </p>
-              <p>
-                Branding, advertising, digital, print and production design for
-                demanding commercial work, including experience with Emirates
-                NBD, EMAAR and Burj Al Arab projects.
-              </p>
-              <p class="responsibilities">
-                Art direction · Campaign design · Artwork preparation ·
-                Production coordination
-              </p>
-            </article>
-            <article class="timeline-item reveal">
-              <p>Graphic Design, Branding &amp; Production</p>
-              <h3>Earlier Professional Practice</h3>
-              <p class="experience-date" data-requires-confirmation="true">
-                Dates and locations to be confirmed
-              </p>
-              <p>
-                A hands-on foundation in visual communication, advertising,
-                campaign development, prepress and print production.
-              </p>
-              <p class="responsibilities">
-                Design development · Prepress · Large-format production · Final
-                artwork
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section approach" id="approach" aria-labelledby="approach-title">
-        <div class="container" tabindex="0">
-          <div class="section-heading reveal">
-            <h2 id="approach-title">How I work</h2>
-          </div>
-          <ol class="approach-list">
-            <li class="reveal"><span>01</span><h3>Understand the problem</h3></li>
-            <li class="reveal"><span>02</span><h3>Map the workflow</h3></li>
-            <li class="reveal"><span>03</span><h3>Plan the user experience</h3></li>
-            <li class="reveal"><span>04</span><h3>Design the solution</h3></li>
-            <li class="reveal"><span>05</span><h3>Build with modern tools</h3></li>
-            <li class="reveal"><span>06</span><h3>Test and improve</h3></li>
-          </ol>
-        </div>
-      </section>
-
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p>© <span data-current-year></span> Liju Pankaj. All rights reserved.</p>
-        <p>Built with clarity. Focused on usefulness.</p>
+    <section class="section profile-section" id="about" aria-labelledby="about-title">
+      <div class="section-heading" data-reveal>
+        <p class="section-index">01 / Profile</p>
+        <h2 id="about-title">Strategy, craft and dependable delivery.</h2>
       </div>
-    </footer>
+      <div class="profile-grid" data-reveal>
+        <p class="profile-lead">I build clear visual systems and carry them through demanding, fast-moving production environments—from the first campaign route to the final stage screen, brochure, social asset or presentation.</p>
+        <div class="profile-copy">
+          <p>My experience spans strategic brand communication, large-format event and exhibition design, corporate and consumer campaigns, hospitality, financial services, presentation design and print production.</p>
+          <p>Strong prepress knowledge helps me design for the realities of production. I collaborate across creative, account, production and client teams, mentor designers, and use AI-assisted workflows where they improve exploration, consistency or turnaround without compromising judgment.</p>
+        </div>
+      </div>
+      <ul class="profile-pillars" data-reveal>
+        <li><span>01</span>Brand communication</li><li><span>02</span>Event scale</li><li><span>03</span>Production precision</li><li><span>04</span>Team collaboration</li>
+      </ul>
+    </section>
 
-    <script src="script.js" defer></script>
-  </body>
+    <section class="section experience-section" id="experience" aria-labelledby="experience-title">
+      <div class="section-heading" data-reveal>
+        <p class="section-index">02 / Experience</p>
+        <h2 id="experience-title">Two decades of UAE design experience.</h2>
+      </div>
+      <div class="timeline" data-reveal>
+        <article class="timeline-item is-current">
+          <div class="timeline-date"><span>2011—Present</span><span>Dubai</span></div>
+          <div class="timeline-body">
+            <h3>Senior Graphic Designer / AI Workflow Specialist</h3><p class="timeline-company">Eleven777 Advertising LLC</p>
+            <p>Develops and delivers brand, campaign, exhibition, hospitality, banking and presentation work across multiple concurrent accounts. Coordinates closely with creative, account and production teams, mentors designers, and introduces practical AI-assisted methods that improve concept exploration and creative workflow efficiency.</p>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-date"><span>2009—2011</span><span>Ajman</span></div>
+          <div class="timeline-body"><h3>Production and Prepress Manager</h3><p class="timeline-company">Nabeel Printing Press LLC</p><p>Managed prepress and production readiness, maintaining artwork quality, colour accuracy and reliable handoff from design through print.</p></div>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-date"><span>2008—2009</span><span>Sharjah</span></div>
+          <div class="timeline-body"><h3>Prepress Supervisor</h3><p class="timeline-company">Modern Graphic Printing Press LLC</p><p>Supervised file preparation, colour and output checks, helping the production team resolve artwork issues before press.</p></div>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-date"><span>2006—2008</span><span>Sharjah</span></div>
+          <div class="timeline-body"><h3>Graphic Designer, CTF and Scanner Operator</h3><p class="timeline-company">Al Sidra Printing Press LLC</p><p>Created print-ready design work and operated core prepress imaging and film-output processes in a deadline-led production environment.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section work-section" id="work" aria-labelledby="work-title">
+      <div class="work-heading" data-reveal>
+        <div class="section-heading"><p class="section-index">03 / Selected Work</p><h2 id="work-title">Real work, selected for range and relevance.</h2></div>
+        <p>Brand systems, event environments, corporate communication and social campaigns developed as part of collaborative agency teams.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filter portfolio projects" data-reveal>
+        <button type="button" data-filter="featured" aria-pressed="true">Featured</button>
+        <button type="button" data-filter="all" aria-pressed="false">All Projects</button>
+        <button type="button" data-filter="Event & Exhibition" aria-pressed="false">Event &amp; Exhibition</button>
+        <button type="button" data-filter="Brand & Campaign" aria-pressed="false">Brand &amp; Campaign</button>
+        <button type="button" data-filter="Digital & Social" aria-pressed="false">Digital &amp; Social</button>
+        <button type="button" data-filter="Presentation" aria-pressed="false">Presentation</button>
+        <button type="button" data-filter="Print & Editorial" aria-pressed="false">Print &amp; Editorial</button>
+        <button type="button" data-filter="Hospitality" aria-pressed="false">Hospitality</button>
+        <button type="button" data-filter="Banking & Corporate" aria-pressed="false">Banking &amp; Corporate</button>
+      </div>
+      <p class="project-count" id="project-count" aria-live="polite"></p>
+      <div class="project-grid" id="project-grid"></div>
+      <noscript><p class="noscript-message">Enable JavaScript to use project filters and view the full image galleries. Featured work includes LEAP, Black Hat MEA, World Police Summit, Messe Frankfurt Middle East, Emaar / Address, Emirates NBD, Rove Hotels, Caesars Palace Dubai and Marriott.</p></noscript>
+      <p class="work-note">Selected design and production contributions completed within agency teams. Client and event marks remain the property of their respective owners.</p>
+    </section>
+
+    <section class="section capabilities-section" id="capabilities" aria-labelledby="capabilities-title">
+      <div class="section-heading" data-reveal><p class="section-index">04 / Capabilities</p><h2 id="capabilities-title">Creative breadth, organised around outcomes.</h2></div>
+      <div class="capability-grid" data-reveal>
+        <article><span>01</span><h3>Brand Identity &amp; Campaign Design</h3><p>Visual identity, key visuals, campaign systems and brand-consistent rollout.</p></article>
+        <article><span>02</span><h3>Event &amp; Exhibition Graphics</h3><p>Entrances, stages, signage, sponsor environments, screens and wayfinding.</p></article>
+        <article><span>03</span><h3>Digital &amp; Social Media Design</h3><p>Paid social, bilingual adaptations, stories, carousels, EDMs and web banners.</p></article>
+        <article><span>04</span><h3>Editorial, Print &amp; Prepress</h3><p>Brochures, reports, collateral, colour, file preparation and production control.</p></article>
+        <article><span>05</span><h3>Presentation &amp; Sales Collateral</h3><p>Corporate presentations, pitch materials, structured content and infographics.</p></article>
+        <article><span>06</span><h3>Motion Graphics &amp; Video</h3><p>Social motion, screen content, editing and campaign adaptations.</p></article>
+        <article><span>07</span><h3>UI/UX &amp; Responsive Fundamentals</h3><p>Clear hierarchy, interface thinking, responsive layouts and digital usability.</p></article>
+        <article><span>08</span><h3>AI-Assisted Creative Production</h3><p>Prompt-led exploration, image workflows and faster content variation.</p></article>
+        <article><span>09</span><h3>Creative Workflow Automation</h3><p>Practical workflow improvements using Python, APIs and LLM-assisted tools.</p></article>
+        <article><span>10</span><h3>Mentoring &amp; Collaboration</h3><p>Designer support, cross-functional coordination and parallel project delivery.</p></article>
+      </div>
+      <div class="tools" data-reveal><h3>Tools &amp; platforms</h3><p>Adobe Photoshop · Illustrator · InDesign · After Effects · Premiere Pro · Adobe XD · PowerPoint · Google Web Designer · HTML/CSS · WordPress · ChatGPT · Claude · Gemini · Midjourney · Runway · OpenAI Codex · Sora · Freepik AI · Lovable.dev</p></div>
+    </section>
+
+    <section class="innovation" aria-labelledby="innovation-title" data-reveal>
+      <div><p class="section-index">05 / Additional Advantage</p><h2 id="innovation-title">AI &amp; Creative Innovation</h2></div>
+      <div class="innovation-copy">
+        <p>AI supports the design practice—not the other way around. I use it for concept development, production automation and repeatable workflow improvements while keeping visual judgment and brand context central.</p>
+        <ul>
+          <li><strong>VectorGuard AI</strong><span>LLM-assisted vector and production utility</span></li>
+          <li><strong>Eleven777 Estimate AI</strong><span>Internal estimating and workflow support</span></li>
+          <li><strong>Creative automation</strong><span>Python, APIs and generative-AI workflows</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section education-section" aria-labelledby="education-title">
+      <div class="section-heading" data-reveal><p class="section-index">06 / Background</p><h2 id="education-title">Education &amp; languages</h2></div>
+      <div class="background-grid" data-reveal>
+        <div><h3>Education</h3><ul><li><span>Diploma in Multimedia</span><span>C-DAC, Kerala</span></li><li><span>Diploma in Software &amp; Hardware Management</span><span>C-DAC, Kerala</span></li><li><span>Degree</span><span>St. Cyril’s College, Adoor, Kerala</span></li></ul></div>
+        <div><h3>Languages</h3><p>English · Hindi · Malayalam</p></div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <p class="section-index">07 / Contact</p>
+      <h2 id="contact-title">Let’s build communication that works at every scale.</h2>
+      <div class="contact-grid">
+        <a href="mailto:lijupankaj@gmail.com"><span>Email</span><strong>lijupankaj@gmail.com</strong><span aria-hidden="true">↗</span></a>
+        <a href="tel:+971552729279"><span>Phone</span><strong>+971&nbsp;55&nbsp;272&nbsp;9279</strong><span aria-hidden="true">↗</span></a>
+        <p><span>Location</span><strong>Sharjah, UAE</strong></p>
+      </div>
+      <div class="contact-actions"><a class="button button-light" href="mailto:lijupankaj@gmail.com?subject=Design%20project%20enquiry">Start a conversation</a><a class="text-link" href="assets/documents/liju-pankaj-resume-2026.pdf" download>Download resume <span aria-hidden="true">↓</span></a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><p>© <span id="current-year">2026</span> Liju Pankaj</p><p>Senior Graphic Designer · Sharjah, UAE</p><a href="#top">Back to top ↑</a></footer>
+
+  <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-shell">
+      <form method="dialog" class="dialog-close-wrap"><button class="dialog-close" type="submit"><span>Close</span><span aria-hidden="true">×</span></button></form>
+      <div id="dialog-content"></div>
+    </div>
+  </dialog>
+
+  <script src="projects.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
 </html>

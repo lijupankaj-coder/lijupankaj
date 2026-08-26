@@ -1,49 +1,69 @@
-# Design and Release QA
+# Design and Release QA — 26 August 2026
 
 ## Recovery checkpoint
 
-- Safety branch: `safety/today-content-2026-08-07`
-- Protected commit: `e6d6597`
+- Safety branch: `safety/pre-resume-portfolio-2026-08-26`
+- Protected pre-redesign commit: `9fff3c0`
+- Existing GitHub Pages root deployment and `CNAME` preserved
 
-## Current interaction update
+## Implemented experience
 
-- Design baseline restored from Git commit: `41919e1`
-- The large contact panel and its navigation link have been removed.
-- The six remaining main sections use mandatory vertical scroll snapping and occupy exactly one viewport height.
-- Selected Work uses a horizontal slider with Previous/Next buttons, project status, touch scrolling, and Left/Right keyboard controls.
-- All rendered text is at least 16px at the tested desktop and mobile sizes.
-- Hero ambience, section-entry movement, content reveals, and project transitions add subtle motion; reduced-motion preferences disable it.
+- Editorial single-page layout with restrained neutral colour, one controlled accent and no theme dependency
+- Sticky desktop navigation and keyboard-accessible mobile menu
+- Eight featured projects, eleven approved projects in total and category filtering
+- Native project dialogs with three real visuals, contribution wording and selected deliverables
+- Focus restoration after dialogs close and visible global focus treatment
+- Responsive layouts at desktop, tablet and mobile sizes
+- Reduced-motion support and no auto-playing media
+- Fixed image dimensions, lazy loading below the fold and AVIF portfolio assets
+- Resume download, metadata, Open Graph image, Person structured data, sitemap and robots configuration
+
+## Included projects
+
+1. LEAP — Informa
+2. Black Hat MEA — Informa
+3. World Police Summit — Informa
+4. Messe Frankfurt Middle East
+5. Emaar / Address Hotels & Resorts
+6. Emirates NBD — Wealth & Private Banking
+7. Emirates NBD — Retail Campaigns
+8. Emirates Islamic Bank
+9. Rove Hotels
+10. Caesars Palace Dubai
+11. Marriott Resort Palm Jumeirah
+
+The requested blocked-project scan is clean across public HTML, CSS, JavaScript, documentation and generated assets.
 
 ## Browser evidence
 
-- Desktop: `/Users/lijupankaj/LLM-Apps/lijupankaj/screenshots/portfolio-1440.png`
-- Tablet: `/Users/lijupankaj/LLM-Apps/lijupankaj/screenshots/portfolio-1024.png`
-- Mobile: `/Users/lijupankaj/LLM-Apps/lijupankaj/screenshots/portfolio-390.png`
-- Dark theme: `/Users/lijupankaj/LLM-Apps/lijupankaj/screenshots/portfolio-dark-1440.png`
+- Desktop hero: `screenshots/portfolio-1440.png`
+- Desktop selected work: `screenshots/portfolio-work-1440.png`
+- Tablet selected work: `screenshots/portfolio-1024.png`
+- Mobile hero: `screenshots/portfolio-390.png`
+- Accessible project dialog: `screenshots/portfolio-project-dialog.png`
 
-## Automated results
+## Verification results
 
-- HTML validation: passed
+- HTML5 validation: passed with zero errors
 - JavaScript syntax: passed
-- Navigation links: 3/3
-- Full-page sections: 6/6 at 1440 × 1024 and 390 × 844
-- Minimum rendered font size: 16px
-- Case studies: 4/4
-- Today’s hero and metadata copy: passed
-- Light, dark, and system themes: passed
-- Mobile menu open and Escape-close behavior: passed
-- Project slider button and keyboard controls: passed
-- Project images: 4/4 loaded
-- Axe accessibility scan: zero violations
-- Browser console errors: zero
-- Browser page errors: zero
-- Desktop horizontal overflow: zero
-- Mobile horizontal overflow: zero
+- Project data: 11 projects, 8 featured, 33 images
+- Project asset HTTP checks: 33/33 returned `200`
+- Missing local source references: zero
+- Browser console and runtime errors: zero
+- Document horizontal overflow: zero at 1440, 1024 and 390 pixels
+- Portfolio filters: All Projects returned 11; Event & Exhibition returned 4
+- Project dialog: opened, rendered 3 images and restored trigger focus after close
+- Mobile menu: opened, reported expanded state and closed successfully
+- Image alternatives: no missing `alt` text in rendered content
+- Accessibility structure: one H1, working skip link, no duplicate IDs, unnamed buttons or empty links
+- Sitemap XML: valid
+- Resume: two pages, A4, unencrypted and byte-for-byte verified against the supplied source
+- Public blocked-project scan: clean
+- Source-file limit: every HTML, CSS and JavaScript file is below 500 lines
+- Git whitespace check: passed
 
-## Visual review
+## Asset coverage
 
-- Desktop preserves the restored grid, gradient/orb hero, rounded panels, timeline, and process-card language while moving through one full-screen section at a time.
-- Mobile typography and navigation were checked at 390 × 844. Sections keep the full-screen presentation and expose longer content through accessible internal scrolling.
-- The horizontal work slider fits without page overflow and remains usable with mouse, touch, buttons, and keyboard.
+All selected project groups have usable real artwork. There are no blocking portfolio-image gaps for this release. The only recommended future upgrade is a higher-resolution professional portrait; later LEAP show photography can also refresh the current 2023 installed-event selection.
 
-final result: passed
+Final result: ready for deployment review.
