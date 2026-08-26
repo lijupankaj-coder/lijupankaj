@@ -1,69 +1,63 @@
-# Liju Pankaj — Senior Graphic Designer Portfolio
+# Liju Pankaj — Portfolio CMS
 
-Source for [lijupankaj.com](https://lijupankaj.com), positioning Liju Pankaj as a Senior Graphic Designer specialising in brand, campaign and event design, with AI-assisted creative workflows as an additional capability.
+Full-stack professional portfolio for Liju Pankaj, Senior Graphic Designer. The public site is driven by an atomic published snapshot; all draft content, project media and administrative operations stay behind Supabase Auth, PostgreSQL Row Level Security and server-side authorization.
 
-## Experience
+The current production site on GitHub Pages is intentionally unchanged. Development is isolated on `cms-preview`; the rollback checkpoint is `safety/pre-cms-2026-08-26`.
 
-The single-page website includes:
+## What is included
 
-- Senior graphic design positioning and professional profile
-- UAE-focused employment history
-- Eight featured case studies and eleven approved projects in total
-- Portfolio filters and accessible native project dialogs
-- Grouped design capabilities and verified tools
-- A secondary AI & Creative Innovation section with six private internal-application case studies
-- Education, languages and direct contact details
-- A downloadable two-page resume
+- Premium responsive single-page portfolio and accessible project case-study dialogs
+- Eleven approved project records, seeded as private drafts with no project images
+- Neutral “Image coming soon” state when a project has no assigned media
+- Structured editors for hero, profile, experience, capabilities, innovation, education, languages, contact, navigation, footer and files
+- Portfolio/category CRUD, duplication, draft/publish state, feature flag and drag ordering
+- Private media library with magic-byte validation, sanitized SVG, size limits, SHA-256 duplicate prevention and WebP variants
+- Project-specific image assignment, cover selection, captions, alt text, focal points, ordering, replacement and safe deletion checks
+- Curated theme tokens, responsive size limits, selected-font loading, live preview, draft save and confirmed reset
+- Administrator-only login, logout and password recovery; public registration is disabled
+- Atomic publication history, public read-only snapshot and persistent last-published file fallback
+- Multi-stage non-root Docker image, automatic migrations and health endpoint
 
-## Technology
+## Stack
 
-The deployment remains a lightweight static GitHub Pages site with no runtime dependencies or compilation step.
+- Next.js 16 / React 19 / TypeScript
+- Supabase Auth, PostgreSQL and private Storage
+- Zod, Sharp, file-type and sanitize-html
+- Docker standalone deployment for Coolify on Hetzner
 
-- `index.html` — semantic content, metadata, Open Graph tags and Person structured data
-- `projects.js` — approved project content and image metadata
-- `script.js` — filters, project dialogs, navigation and focus management
-- `styles.css` — global design tokens, navigation, hero and profile layout
-- `portfolio.css` — work, experience, capability, dialog and contact components
-- `innovation.css` — private internal-application case studies and disclosure control
-- `responsive.css` — tablet and mobile behaviour
-- `assets/portfolio/` — 33 selected AVIF project visuals
-- `assets/documents/` — downloadable resume
-- `robots.txt` and `sitemap.xml` — search discovery
-- `CNAME` — existing `lijupankaj.com` custom-domain configuration
+## Local setup
 
-All source files remain below 500 lines.
-
-## Local preview
+Requirements: Node 22+, Docker Desktop and Supabase CLI.
 
 ```bash
-python3 -m http.server 4173
+npm ci
+supabase start
+cp .env.example .env.local
+npm run migrate
+npm run admin:provision
+npm run dev
 ```
 
-Open `http://127.0.0.1:4173/`.
+Use the local URL and keys printed by `supabase status -o env` in `.env.local`. The local ports are defined in `supabase/config.toml`; the app runs at `http://127.0.0.1:3100`.
 
-## Content and asset notes
+The provisioner creates or approves only `CMS_ADMIN_EMAIL` and never prints its random bootstrap password. Open `/admin/forgot-password` to set the password through email recovery.
 
-- All eleven case studies use supplied project-archive files; no placeholder or generated campaign artwork is used.
-- Each project has three selected visuals with intrinsic dimensions and descriptive alternative text.
-- Editable artwork, working files, client instructions and internal account material are not published.
-- The internal-app reference contained no embedded screenshots, so these case studies use restrained lettermark icons rather than invented interfaces.
-- Four internal applications are shown initially; two more are available through an accessible disclosure control. Every link is identified as private and opens securely in a new tab.
-- No employee names, assignees, internal email addresses, credentials, client data or confidential application screens are included.
-- The contact action uses direct email and telephone links; there is no form endpoint or exposed API key.
-- The supplied resume portrait is 307 × 283 pixels. For a future photography upgrade, replace it with a professionally retouched portrait at least 1200 × 1500 pixels while keeping the same filenames.
-- The LEAP case study range follows the supplied project record. The selected installed-event photographs currently shown are from 2023; later approved show photography can be added through `projects.js` when available.
+## Verification
 
-## Deployment
+```bash
+npm run lint
+npm run typecheck
+npm test
+supabase test db
+npm run build
+docker build -t liju-portfolio-cms:preview .
+```
 
-GitHub Pages serves the repository root. The existing `CNAME` and domain configuration are preserved.
+## Deployment and operations
 
-1. Review the local preview and `design-qa.md`.
-2. Commit the approved changes to the configured publishing branch.
-3. Push to GitHub.
-4. Confirm the Pages deployment and test `https://lijupankaj.com/`, the resume download and one project dialog.
+- [Deployment and DNS](docs/DEPLOYMENT.md)
+- [Administrator guide](docs/ADMIN-GUIDE.md)
+- [Backups, restore and rollback](docs/OPERATIONS.md)
+- [Portfolio asset checklist](docs/ASSET-CHECKLIST.md)
 
-No build command or server-side environment variables are required.
-
-## Recovery
-
-The pre-redesign revision is preserved on `safety/pre-resume-portfolio-2026-08-26`.
+Do not switch `lijupankaj.com`, disable GitHub Pages or remove the current deployment until the Coolify preview has passed the documented acceptance checks and Liju has explicitly approved the DNS cutover.

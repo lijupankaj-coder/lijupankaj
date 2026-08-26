@@ -2,3 +2,16 @@
 tmp/
 portfolio_shortlist.md
 MY RESUME 2026.pdf
+node_modules/
+.next/
+out/
+.env
+.env.*
+!.env.example
+coverage/
+*.log
+*.tsbuildinfo
+.vercel/
+data/
+supabase/.branches/
+supabase/.temp/
