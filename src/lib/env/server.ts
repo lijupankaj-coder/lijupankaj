@@ -3,6 +3,7 @@ import { z } from "zod";
 
 const serverEnvSchema = z.object({
   SUPABASE_SECRET_KEY: z.string().min(20),
+  SUPABASE_INTERNAL_URL: z.string().url().optional(),
   DATABASE_URL: z.string().min(20),
   DATABASE_SSL: z.enum(["require", "disable"]).default("require"),
   CMS_ADMIN_EMAIL: z.string().email(),
@@ -24,4 +25,11 @@ export function requireServerConfig() {
 
 export function getSnapshotPath() {
   return process.env.CMS_SNAPSHOT_PATH || "/app/data/published-content.json";
+}
+
+export function getInternalSupabaseUrl() {
+  const value = process.env.SUPABASE_INTERNAL_URL;
+  if (!value) return null;
+  const parsed = z.string().url().safeParse(value);
+  return parsed.success ? parsed.data : null;
 }
