@@ -19,6 +19,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .site-header nav a, .header-resume { font: 600 var(--nav-size)/1 var(--font-primary); letter-spacing: .05em; }
 .site-header nav a:hover { color: var(--accent); }
 .header-resume { border-bottom: 1px solid var(--heading); color: var(--heading); justify-self: end; padding: 8px 0; }
+.scroll-progress { background: color-mix(in srgb, var(--border) 55%, transparent); bottom: -1px; height: 3px; left: 0; overflow: hidden; pointer-events: none; position: absolute; width: 100%; }
+.scroll-progress span { background: var(--accent); display: block; height: 100%; transform: scaleX(var(--scroll-progress, 0)); transform-origin: left center; width: 100%; will-change: transform; }
 
 .hero { display: grid; gap: clamp(48px, 8vw, 130px); grid-template-columns: minmax(0, 1.45fr) minmax(280px, .55fr); margin: 0 auto; max-width: var(--container); min-height: calc(100svh - 78px); padding: clamp(72px, 10vw, 150px) 28px 80px; }
 .hero-copy { align-self: center; }
@@ -152,4 +154,5 @@ footer p { margin: 0; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
   [data-parallax] { transform: none !important; will-change: auto; }
   [data-section-reveal] { clip-path: none !important; opacity: 1 !important; }
+  .scroll-progress span { will-change: auto; }
 }

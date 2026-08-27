@@ -1,6 +1,7 @@
 import { InnovationGrid } from "@/components/public/innovation-grid";
 import { ParallaxController } from "@/components/public/parallax-controller";
 import { PortfolioGallery } from "@/components/public/portfolio-gallery";
+import { ScrollProgress } from "@/components/public/scroll-progress";
 import { getPublishedSnapshot } from "@/lib/cms/snapshot";
 import { buildStructuredData, serializeJsonLd } from "@/lib/seo";
 import Image from "next/image";
@@ -28,6 +29,7 @@ export default async function HomePage() {
           {sections.navigation.items.filter((item) => item.visible).map((item) => <a key={item.id} href={item.href}>{item.label}</a>)}
         </nav>
         <a className="header-resume" href={resumeUrl} download>{sections.navigation.resumeLabel}</a>
+        <ScrollProgress />
       </header>
 
       <section className="hero" id="top" data-section-reveal>
