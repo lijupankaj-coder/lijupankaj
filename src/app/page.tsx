@@ -37,7 +37,7 @@ export default async function HomePage() {
           <div className="hero-actions"><a className="primary-button" href="#work">{sections.hero.primaryButtonLabel}</a><a className="outline-button" href={resumeUrl} download>{sections.hero.resumeButtonLabel}</a></div>
           <dl className="hero-facts"><div><dt>Experience</dt><dd>24 years</dd></div><div><dt>UAE practice</dt><dd>21 years</dd></div><div><dt>Based in</dt><dd>{sections.hero.location}</dd></div></dl>
         </div>
-        <div className="portrait-frame"><Image src={profileUrl} alt="Liju Pankaj, Senior Graphic Designer" width={900} height={830} priority sizes="(max-width: 620px) 90vw, (max-width: 900px) 440px, 28vw" /></div>
+        <div className="portrait-frame"><Image src={profileUrl} alt="Liju Pankaj, Senior Graphic Designer" width={900} height={1125} priority sizes="(max-width: 620px) 90vw, (max-width: 900px) 440px, 28vw" /></div>
       </section>
 
       {sections.visibility.profile && <section className="section profile-section" id="about">

@@ -35,7 +35,7 @@ h1 { color: var(--heading); font: 600 clamp(var(--hero-heading-min), 8.3vw, var(
 .hero-facts dd { color: var(--heading); font: 600 17px/1.4 var(--font-primary); margin: 5px 0 0; }
 .portrait-frame { align-self: center; background: var(--surface); border: 1px solid var(--border); padding: 16px; position: relative; }
 .portrait-frame::before { background: var(--accent); content: ""; height: 4px; left: -1px; position: absolute; top: -1px; width: 42%; }
-.portrait-frame img { aspect-ratio: 307/283; filter: saturate(.75) contrast(1.03); height: auto; object-fit: cover; width: 100%; }
+.portrait-frame img { aspect-ratio: 4/5; filter: saturate(.75) contrast(1.03); height: auto; object-fit: cover; object-position: center 38%; width: 100%; }
 
 .section { border-top: 1px solid var(--border); display: grid; gap: 48px; grid-template-columns: minmax(150px, .24fr) minmax(0, 1fr); margin: 0 auto; max-width: var(--container); padding: var(--section-space) 28px; }
 .section-label { align-self: start; display: flex; gap: 18px; padding-top: 13px; position: sticky; top: 100px; }
