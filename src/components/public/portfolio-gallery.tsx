@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import type { PublicProject } from "@/types/cms";
 
@@ -55,7 +56,7 @@ export function PortfolioGallery({ projects, categories }: Props) {
           );
         })}
       </div>
-      {openProject && (
+      {openProject && typeof document !== "undefined" && createPortal(
         <div className="dialog-backdrop" role="presentation" onMouseDown={() => setOpenProject(null)}>
           <section className="project-dialog" role="dialog" aria-modal="true" aria-labelledby="project-dialog-title" onMouseDown={(event) => event.stopPropagation()}>
             <button className="dialog-close" onClick={() => setOpenProject(null)} aria-label="Close case study" autoFocus>Close</button>
@@ -76,7 +77,8 @@ export function PortfolioGallery({ projects, categories }: Props) {
               )) : <div className="project-cover project-cover-large"><span>Image coming soon</span></div>}
             </div>
           </section>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
