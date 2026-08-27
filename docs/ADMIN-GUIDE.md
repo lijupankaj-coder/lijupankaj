@@ -1,5 +1,7 @@
 # Portfolio CMS administrator guide
 
+Last updated: 27 August 2026 (Asia/Dubai)
+
 ## First administrator setup
 
 1. In Supabase Authentication, enable the Email provider, disable public user sign-ups, enable leaked-password protection if the plan supports it, and configure production SMTP.
@@ -30,6 +32,8 @@ If SMTP delivery is temporarily unavailable, use the application terminal in Coo
 - The public site does not query draft tables.
 - A persistent `/app/data/published-content.json` file keeps the last valid publication available if the CMS database is temporarily unavailable.
 
+After publishing, note the revision shown in the success message and compare it with `https://lijupankaj.com/api/health`. The homepage is invalidated during publication and also has a 60-second revalidation safeguard. If the health revision is current but an already-open browser tab is stale, refresh the public page once; do not create another revision solely to clear a browser cache.
+
 ## Portfolio workflow
 
 1. Open **Portfolio** and choose an approved project or create a new one.
@@ -58,6 +62,26 @@ Replacement uploads create a new immutable media record and reassign the draft p
 **Website Content** contains structured fields for all public copy, navigation labels, section visibility, employment history, capability groups, internal applications, education, languages, contact, profile photo and resume.
 
 **Website Style** exposes only curated fonts and bounded tokens. The live preview is local to the draft editor. Use **Save Draft**, then **Publish Changes**. **Reset to Default Theme** requires confirmation and remains a draft until published.
+
+## AI & Creative Innovation
+
+Internal applications are private case studies, not public demos. Every card must retain the access notice and use **Open Private Application** for its external link. Visitors without an authorized Eleven777 account may see only a login or access-denied screen.
+
+The approved application register is:
+
+- VectorGuard AI — featured
+- EDM Compliance Guard — featured
+- BG Remover AI — featured
+- Idea Generation Hub (IGH) — featured
+- Image Check Tool
+- Mockup Creator
+- Social Content + Visual Editor
+- Estimator Tool
+- E777 CRM
+- File Compressor
+- File Share
+
+Keep no more than four applications featured initially; the remaining cards are available through **View More Internal Tools**. Design Inspector and ENBD EDM Generator are intentionally excluded and must not be added back through the CMS. Do not upload internal screenshots unless they have been approved and fully cleared of employee, client, account and credential data.
 
 ## Sign-out and account security
 

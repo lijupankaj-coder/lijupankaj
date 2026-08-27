@@ -2,12 +2,15 @@
 
 Full-stack professional portfolio for Liju Pankaj, Senior Graphic Designer. The public site is driven by an atomic published snapshot; all draft content, project media and administrative operations stay behind Supabase Auth, PostgreSQL Row Level Security and server-side authorization.
 
-The full-stack release is deployed and verified in Coolify from `cms-preview`. The prior GitHub Pages release remains reachable until Hostinger DNS is cut over; the rollback checkpoint is `safety/pre-cms-2026-08-26`.
+Last updated: 27 August 2026 (Asia/Dubai)
+
+The full-stack release is live at [lijupankaj.com](https://lijupankaj.com/) and deployed through Coolify from `cms-preview`. Hostinger DNS now sends the production domain to the Coolify ingress service. The previous GitHub Pages release and `safety/pre-cms-2026-08-26` branch remain available only as rollback checkpoints.
 
 ## What is included
 
 - Premium responsive single-page portfolio and accessible project case-study dialogs
-- Eleven approved project records, seeded as private drafts with no project images
+- Nine published project case studies with verified, project-specific media
+- Four approved project records retained as private drafts until matching public-safe artwork is ready
 - Neutral “Image coming soon” state when a project has no assigned media
 - Structured editors for hero, profile, experience, capabilities, innovation, education, languages, contact, navigation, footer and files
 - Portfolio/category CRUD, duplication, draft/publish state, feature flag and drag ordering
@@ -16,6 +19,8 @@ The full-stack release is deployed and verified in Coolify from `cms-preview`. T
 - Curated theme tokens, responsive size limits, selected-font loading, live preview, draft save and confirmed reset
 - Administrator-only login, logout and password recovery; public registration is disabled
 - Atomic publication history, public read-only snapshot and persistent last-published file fallback
+- Section reveal and restrained parallax motion with `prefers-reduced-motion` support
+- Header reading-progress indicator, SEO metadata, structured data, sitemap and robots configuration
 - Multi-stage non-root Docker image, automatic migrations and health endpoint
 
 ## Stack
@@ -23,7 +28,8 @@ The full-stack release is deployed and verified in Coolify from `cms-preview`. T
 - Next.js 16 / React 19 / TypeScript
 - Supabase Auth, PostgreSQL and private Storage
 - Zod, Sharp, file-type and sanitize-html
-- Docker standalone deployment for Coolify on Hetzner
+- Docker standalone deployment on the private application VM, managed by Coolify
+- Hetzner ingress bridge for public HTTPS routing to the private application network
 
 ## Local setup
 
@@ -59,5 +65,6 @@ docker build -t liju-portfolio-cms:preview .
 - [Administrator guide](docs/ADMIN-GUIDE.md)
 - [Backups, restore and rollback](docs/OPERATIONS.md)
 - [Portfolio asset checklist](docs/ASSET-CHECKLIST.md)
+- [Published portfolio and innovation register](portfolio_shortlist.md)
 
-Do not disable GitHub Pages or delete the safety branch until the Coolify production domains have remained stable through the documented observation period.
+Production health is available at `GET https://lijupankaj.com/api/health`. Keep the safety branch, old Pages configuration and pre-cutover DNS values documented until a rollback is no longer operationally useful.

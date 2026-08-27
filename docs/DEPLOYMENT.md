@@ -1,39 +1,40 @@
-# Coolify preview and production deployment
+# Coolify production deployment
+
+Last updated: 27 August 2026 (Asia/Dubai)
 
 ## Current production state
 
-The full-stack application is deployed from `cms-preview` through the Coolify GitHub App. Next.js and the dedicated self-hosted Supabase stack run on the private application VM; a lightweight Coolify edge bridge on the Hetzner ingress VPS terminates HTTPS and forwards traffic over Tailscale. The preview site, administrator login, published media and production host routing have passed direct tests.
+The full-stack application is live at `https://lijupankaj.com` and deployed from `cms-preview` through the Coolify GitHub App. Next.js and the dedicated self-hosted Supabase stack run on the private application VM; a lightweight Coolify edge bridge on the Hetzner ingress VPS terminates HTTPS and forwards traffic over Tailscale. The public portfolio, administrator login, publishing, private media delivery and production host routing have passed production tests.
 
-The authoritative DNS provider is Hostinger (`helios.dns-parking.com` and `aster.dns-parking.com`), not Cloudflare. Until the DNS cutover is completed, the apex remains on GitHub Pages. The `safety/pre-cms-2026-08-26` branch and the old Pages configuration are retained as rollback.
+The authoritative DNS provider is Hostinger (`helios.dns-parking.com` and `aster.dns-parking.com`), not Cloudflare. The production apex and `www` now route to Coolify rather than GitHub Pages. The `safety/pre-cms-2026-08-26` branch, old Pages configuration and pre-cutover DNS values are retained as rollback references.
 
-## 1. Create the production Supabase project
+## 1. Production data service
 
-No suitable active Supabase project was found for this portfolio, so create a dedicated project. Do not reuse unrelated application databases.
+The portfolio uses its own self-hosted Supabase service. Do not reuse an unrelated application database or Storage bucket.
 
-1. Create a Supabase project in the nearest suitable region and record its project URL, publishable key, new-format secret key and database password.
-2. Authentication → Providers: enable Email.
-3. Authentication settings: disable new-user registration. Keep the Email provider enabled so the approved existing account can sign in.
-4. Configure custom SMTP before relying on invitation or recovery email.
-5. Set Site URL to the preview URL initially. Add preview and production `/auth/callback` URLs to the redirect allow-list.
-6. Use the direct PostgreSQL URL, or the session-mode pooler URL, for `DATABASE_URL`. Do not use a transaction-mode pooler for schema migrations.
-7. Keep `cms-media` private. The migration creates or corrects this bucket and its policies.
+1. Keep Email authentication enabled and public registration disabled.
+2. Keep custom SMTP working for password recovery.
+3. Keep `https://lijupankaj.com` as the Auth Site URL and production `/auth/callback` in the redirect allow-list. Retain the preview callback only while the preview route is in use.
+4. Use the private direct PostgreSQL connection for startup migrations. Do not use a transaction-mode pooler for schema migrations.
+5. Keep `cms-media` private. Public artwork is delivered only through the application media route after it is included in a published snapshot.
+6. Keep database, Auth and Storage volumes persistent across application redeployments.
 
 The container runs every unapplied SQL file in `supabase/migrations` at startup under an advisory lock. A checksum change to an applied migration fails deployment rather than silently drifting. Supabase CLI-applied migrations are safely adopted into the app migration ledger.
 
-## 2. Push the preview branch
+## 2. Source and release branch
 
-Keep GitHub as source control. Push `cms-preview` only after local tests pass. Do not merge into `main` yet. The safety branch `safety/pre-cms-2026-08-26` preserves the previous static release.
+GitHub remains the source-code repository. Production currently tracks `cms-preview`; push only after local verification. The safety branch `safety/pre-cms-2026-08-26` preserves the previous static release.
 
-## 3. Create the Coolify application
+## 3. Coolify application configuration
 
-1. In Coolify, create a new application in a staging/preview environment.
+1. Source the application through the Coolify GitHub App.
 2. Source: GitHub repository `lijupankaj-developer/lijupankaj`, branch `cms-preview`.
 3. Build pack: Dockerfile; Dockerfile location: `/Dockerfile`.
 4. Exposed port: `3000`; health check: `/api/health`; expected status: 200.
 5. Add a persistent volume mounted at `/app/data`. This stores the last valid published snapshot across redeployments.
 6. Enable automatic restart unless manually stopped.
-7. Use a generated Coolify domain first, or a staging hostname such as `portfolio-preview.lijupankaj.com` that does not affect the apex.
-8. Connect the repository through the Coolify GitHub App so pushes to `cms-preview` trigger rebuilds. Protect production from branch changes until cutover approval.
+7. Keep a generated Coolify preview domain available for release checks that must not affect the apex.
+8. Keep webhook-based automatic deployment enabled for `cms-preview`, and review the health check before considering a deployment complete.
 
 ## Required environment variables
 
@@ -60,9 +61,9 @@ Never set `SKIP_MIGRATIONS=true` in production. Never commit `.env.local`, servi
 
 After the first healthy deployment, run `npm run admin:provision` once in a secure job/container with the same environment. Then use `/admin/forgot-password` to set the private password. Full usage is in [ADMIN-GUIDE.md](ADMIN-GUIDE.md).
 
-## 5. Preview acceptance gate
+## 5. Release acceptance gate
 
-Do not proceed to DNS until all items pass on the Coolify preview domain:
+Run these checks on a preview route before a material application, schema, Auth or Storage change reaches production:
 
 - SSL is valid and HTTP redirects to HTTPS.
 - `/api/health` stays healthy through a container restart.
@@ -71,7 +72,7 @@ Do not proceed to DNS until all items pass on the Coolify preview domain:
 - A project can be created, edited, duplicated, reordered and deleted.
 - Upload, duplicate prevention, assignment, replacement, cover, focal point and removal work.
 - Draft content and theme changes remain invisible until Publish Changes.
-- Publish updates the public site promptly; Unpublished removes a project on the next publish.
+- Publish returns a new revision, `/api/health` reports it, and the public page refreshes to that revision; Unpublished removes a project on the next publish.
 - Theme save, reset confirmation and publication work.
 - Profile and resume files work.
 - Unauthorized REST requests cannot read drafts or write content.
@@ -80,22 +81,19 @@ Do not proceed to DNS until all items pass on the Coolify preview domain:
 - Security headers are present and no secret appears in browser bundles or logs.
 - Backups and a restore rehearsal have completed.
 
-The in-app browser was unavailable during local verification, so this external visual/click-through gate is mandatory.
+## 6. Completed production cutover
 
-## 6. Production cutover
+The production cutover was completed on 27 August 2026. Coolify is configured for `lijupankaj.com`, `www.lijupankaj.com` and `supabase.lijupankaj.com`; production environment variables and Auth callbacks are applied.
 
-Liju explicitly approved production deployment. The Coolify applications are already configured for `lijupankaj.com`, `www.lijupankaj.com`, and `supabase.lijupankaj.com`; production environment variables and Auth callbacks are applied.
-
-In Hostinger DNS:
+Current DNS intent:
 
 1. Preserve all MX, TXT, CAA and unrelated records.
-2. Replace the four GitHub Pages apex A records with one `@` A record pointing to the Coolify Hetzner ingress address from the private server inventory.
-3. Change `www` from `lijupankaj.github.io` to CNAME `lijupankaj.com`.
-4. Add a `supabase` A record pointing to the same Coolify ingress address.
-5. Use TTL 300 during cutover. Hostinger automatically creates DNS snapshots; record the newest snapshot ID before writing.
-6. Verify authoritative DNS, HTTP-to-HTTPS redirects, valid Let’s Encrypt certificates, `/api/health`, the homepage, `/admin`, login/logout, publish, and media downloads.
-7. Run the five-minute uptime check during the observation period. Disable GitHub Pages only after the Coolify site remains stable; there is no Pages workflow file to remove.
-8. Keep the safety branch and old DNS values indefinitely as a rollback checkpoint.
+2. Route the apex `@` A record to the Coolify Hetzner ingress address stored in the private server inventory.
+3. Route `www` by CNAME to `lijupankaj.com`.
+4. Route `supabase` to the same ingress address for the dedicated self-hosted Supabase service.
+5. Keep the Google Search Console verification TXT record and unrelated domain-verification records intact.
+6. Verify authoritative DNS, HTTP-to-HTTPS redirects, Let’s Encrypt certificates, `/api/health`, the homepage, `/admin`, login/logout, publish and media downloads after every DNS or ingress change.
+7. Keep the five-minute uptime check active and retain the safety branch and previous DNS values as rollback checkpoints.
 
 ## Rollback during cutover
 

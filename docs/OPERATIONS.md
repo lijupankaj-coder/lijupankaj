@@ -1,5 +1,9 @@
 # Operations, backup and recovery
 
+Last updated: 27 August 2026 (Asia/Dubai)
+
+Production URL: `https://lijupankaj.com`. The public application and administrator dashboard run on the private application VM behind the Coolify-managed Hetzner ingress bridge.
+
 ## Monitoring and restart policy
 
 - Coolify health endpoint: `GET /api/health`, interval 30 seconds, timeout 5 seconds, three failures before unhealthy.
@@ -7,6 +11,17 @@
 - The Hetzner ingress host runs `ops/check-production-health.sh` every five minutes against `/api/health`, the public homepage and Supabase Auth. Failures are written to the dedicated monitor log. Add an email or private-message alert transport when credentials are available.
 - Monitor Coolify container logs and Supabase Auth, Postgres and Storage logs. Application errors contain no credentials or uploaded file contents.
 - The health endpoint deliberately remains healthy when it can serve the last published snapshot; database outages should be separately monitored through Supabase alerts.
+
+## Publish and cache verification
+
+1. In `/admin`, save the relevant draft and click **Publish Changes**.
+2. Record the revision returned by the success message.
+3. Open `https://lijupankaj.com/api/health` and confirm that it reports the same revision and a current `publishedAt` timestamp. The health response is not cached.
+4. Refresh the public homepage. Publication calls `revalidatePath("/")`; the homepage also has a 60-second revalidation safeguard.
+5. If the health revision is current but a previously open tab is stale, perform one normal refresh and check in a private window before republishing. Repeated publishing creates unnecessary revisions and is not a cache-repair procedure.
+6. If the health revision does not advance, inspect the publish request, application logs, database RPC and `/app/data/published-content.json` write. If health advances but every browser remains stale beyond 60 seconds, inspect the active domain route and any upstream cache.
+
+At this documentation update, the live published snapshot was revision 22. Treat that number as a dated baseline, not a fixed expected value; each valid publish increments it.
 
 ## Backup policy
 
@@ -91,5 +106,6 @@ Verify object counts, hashes, private bucket access and published media through 
 - For an application regression, redeploy the previously verified Coolify image/commit without changing the database.
 - For a content publication error, select the prior snapshot from `public.publication_history` in a maintenance transaction and publish it through a reviewed admin recovery procedure; retain the erroneous revision for audit.
 - For a DNS-level failure, restore the GitHub Pages records documented in [DEPLOYMENT.md](DEPLOYMENT.md).
+- The GitHub Pages build is not the active production route. Do not delete the `safety/pre-cms-2026-08-26` branch or its matching DNS notes during an incident.
 
 Record the restore date, operator, backup identifiers, object counts, database revision and validation results after every rehearsal or real recovery.
