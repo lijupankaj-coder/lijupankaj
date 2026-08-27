@@ -1,27 +1,25 @@
 import { InnovationGrid } from "@/components/public/innovation-grid";
 import { PortfolioGallery } from "@/components/public/portfolio-gallery";
 import { getPublishedSnapshot } from "@/lib/cms/snapshot";
+import { buildStructuredData, serializeJsonLd } from "@/lib/seo";
 import Image from "next/image";
 
 export const revalidate = 60;
 
 export default async function HomePage() {
-  const { sections, projects, categories } = await getPublishedSnapshot();
+  const snapshot = await getPublishedSnapshot();
+  const { sections, projects, categories } = snapshot;
   const profileUrl = sections.hero.profileMediaId ? `/api/media/${sections.hero.profileMediaId}` : sections.hero.profileFallbackUrl;
   const resumeUrl = sections.resume.mediaId ? `/api/media/${sections.resume.mediaId}?download=1` : sections.resume.fallbackUrl;
   const featured = projects.filter((project) => project.featured).slice(0, 8);
   const remaining = projects.filter((project) => !featured.some((item) => item.id === project.id));
   const portfolioProjects = [...featured, ...remaining];
   const visibleCategories = categories.filter((category) => projects.some((project) => project.category?.id === category.id));
-  const structuredData = {
-    "@context": "https://schema.org", "@type": "Person", name: "Liju Pankaj", jobTitle: "Senior Graphic Designer",
-    address: { "@type": "PostalAddress", addressLocality: "Sharjah", addressCountry: "AE" },
-    email: `mailto:${sections.contact.email}`, telephone: sections.contact.phone, url: process.env.SITE_URL || "https://lijupankaj.com"
-  };
+  const structuredData = buildStructuredData(snapshot);
 
   return (
     <main>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }} />
       <header className="site-header">
         <a className="wordmark" href="#top" aria-label="Liju Pankaj, home"><span>LIJU</span> PANKAJ</a>
         <nav aria-label="Primary navigation">

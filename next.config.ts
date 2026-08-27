@@ -33,6 +33,22 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   serverExternalPackages: ["sharp"],
   turbopack: { root: process.cwd() },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.lijupankaj.com" }],
+        destination: "https://lijupankaj.com/:path*",
+        permanent: true
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "portfolio-preview.49-13-238-2.sslip.io" }],
+        destination: "https://lijupankaj.com/:path*",
+        permanent: true
+      }
+    ];
+  },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },
