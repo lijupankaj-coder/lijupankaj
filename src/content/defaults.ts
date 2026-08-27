@@ -68,8 +68,8 @@ export const defaultSections: SiteSections = {
     ]
   },
   portfolio: {
-    heading: "Selected work, published with care.",
-    introduction: "Only verified project imagery assigned through the CMS is displayed here.",
+    heading: "Selected work.",
+    introduction: "A selection of branding, campaigns, event graphics and digital design projects, combining creative thinking with careful execution.",
     emptyMessage: "Portfolio imagery is being reviewed. Approved case studies will appear here when their verified assets are ready."
   },
   capabilities: {
