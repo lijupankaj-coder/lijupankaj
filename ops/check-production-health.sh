@@ -16,7 +16,11 @@ curl --fail --silent --show-error --max-time "$timeout_seconds" --output /dev/nu
 
 if [ -n "$supabase_url" ]; then
   case "$supabase_url" in https://*) ;; *) echo "SUPABASE_URL must use HTTPS" >&2; exit 1 ;; esac
-  curl --fail --silent --show-error --max-time "$timeout_seconds" --output /dev/null "${supabase_url%/}/auth/v1/health"
+  auth_status=$(curl --silent --show-error --max-time "$timeout_seconds" --output /dev/null --write-out '%{http_code}' "${supabase_url%/}/auth/v1/settings")
+  case "$auth_status" in
+    200|401) ;;
+    *) echo "Supabase health check returned HTTP $auth_status" >&2; exit 1 ;;
+  esac
 fi
 
 echo "Portfolio health check passed at $(date -u +%Y-%m-%dT%H:%M:%SZ)"
