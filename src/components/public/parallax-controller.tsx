@@ -7,8 +7,45 @@ const shiftProperty = "--parallax-y";
 export function ParallaxController() {
   useEffect(() => {
     const elements = Array.from(document.querySelectorAll<HTMLElement>("[data-parallax]"));
+    const revealElements = Array.from(document.querySelectorAll<HTMLElement>("[data-section-reveal]"));
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const revealTimers = new Set<number>();
     let frame = 0;
+
+    const reveal = (element: HTMLElement) => {
+      element.classList.remove("reveal-pending");
+      if (reducedMotion.matches) {
+        element.classList.remove("is-revealed");
+        return;
+      }
+      element.classList.add("is-revealed");
+      const timer = window.setTimeout(() => {
+        element.classList.remove("is-revealed");
+        revealTimers.delete(timer);
+      }, 1050);
+      revealTimers.add(timer);
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        reveal(entry.target as HTMLElement);
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -8% 0px" });
+
+    if (reducedMotion.matches) {
+      revealElements.forEach(reveal);
+    } else {
+      revealElements.forEach((element) => {
+        element.classList.add("reveal-pending");
+        if (element.getBoundingClientRect().top <= window.innerHeight * 0.92) {
+          window.requestAnimationFrame(() => reveal(element));
+        } else {
+          revealObserver.observe(element);
+        }
+      });
+    }
 
     const update = () => {
       frame = 0;
@@ -35,20 +72,33 @@ export function ParallaxController() {
       if (!frame) frame = window.requestAnimationFrame(update);
     };
 
+    const syncMotionPreference = () => {
+      if (reducedMotion.matches) {
+        revealObserver.disconnect();
+        revealTimers.forEach((timer) => window.clearTimeout(timer));
+        revealTimers.clear();
+        revealElements.forEach(reveal);
+      }
+      schedule();
+    };
+
     const resizeObserver = new ResizeObserver(schedule);
     resizeObserver.observe(document.documentElement);
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule);
-    reducedMotion.addEventListener("change", schedule);
+    reducedMotion.addEventListener("change", syncMotionPreference);
     schedule();
 
     return () => {
       window.cancelAnimationFrame(frame);
+      revealTimers.forEach((timer) => window.clearTimeout(timer));
+      revealObserver.disconnect();
       resizeObserver.disconnect();
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
-      reducedMotion.removeEventListener("change", schedule);
+      reducedMotion.removeEventListener("change", syncMotionPreference);
       elements.forEach((element) => element.style.removeProperty(shiftProperty));
+      revealElements.forEach((element) => element.classList.remove("reveal-pending", "is-revealed"));
     };
   }, []);
 
